@@ -21,7 +21,7 @@ MW 11:00-12:40, SRB 1404
 <br>
 **Instructor**: Tanzy Love
 <br>
-**Website**: https://bst-urmc.github.io/bst430-fall2026-site/docs/index.html
+**Website**: https://bst-urmc.github.io/bst430-fall2026-site/
 <br>
 [**Syllabus**](static/syllabus430-2026.pdf)
 
@@ -88,7 +88,7 @@ MW 11:00-12:40, SRB 1404
 
 <!--     * Work on Lab 6 -->
 <!-- 18.  [Multivariate linear models](lecture/l16-multivariate-lm.html) -->
-<!-- <!-- 19.   [Multivariate linear models and Prediction](lecture/l16-crossv-lm.html) [video link](https://rochester.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c0310bc9-e6f7-40b6-9f22-af4e012d961e) --> -->
+<!-- <!-- 19.   [Multivariate linear models and Prediction](lecture/l16-crossv-lm.html) [video link](https://rochester.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c0310bc9-e6f7-40b6-9f22-af4e012d961e) -->
 
 <!--     *  Work on Lab 6 -->
 <!-- 19.  [Prediction and logistic regression](lecture/l17-prediction-logistic.html) -->

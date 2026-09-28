@@ -61,16 +61,16 @@ Run these lines in interactive mode (you can copy-and-paste them but you'll have
   user.email = "Tanzy_Love@urmc.rochester.edu")
   ```
 
--  Next, we need to set up a personal access token so that you can write from rstudio cloud to github. To do this, enter use the following command into the Console:
-   ```
-   usethis::create_github_token()
-   ```
-Follow the instructions.  **Be sure to save the PAT in a password manager**, you will have to re-enter it, depending on your set-up.
+<!-- -  Next, we need to set up a personal access token so that you can write from rstudio cloud to github. To do this, enter use the following command into the Console: -->
+<!--    ``` -->
+<!--    usethis::create_github_token() -->
+<!--    ``` -->
+<!-- Follow the instructions.  **Be sure to save the PAT in a password manager**, you will have to re-enter it, depending on your set-up. -->
 
-   ```
-   gitcreds::gitcreds_set()
-   ```
-paste in the token from the last step.  If you picked this token to have a 6 month expiration, you shouldn't have to do this again.
+<!--    ``` -->
+<!--    gitcreds::gitcreds_set() -->
+<!--    ``` -->
+<!-- paste in the token from the last step.  If you picked this token to have a 6 month expiration, you shouldn't have to do this again. -->
 
 # Getting started
 
