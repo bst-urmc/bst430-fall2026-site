@@ -33,7 +33,7 @@ Your email address is the address tied to your GitHub account and your name shou
 ```
 
 Before we can get started we need to take care of some required housekeeping.
-These should only need to be done once, or maybe once a month for the PAT.
+These should only need to be done once.
 
 Specifically,  we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name.
 
@@ -42,13 +42,13 @@ Specifically,  we need to configure your git so that RStudio can communicate wit
 - Open RStudio and go to the **Console** for these one-off bits.
 Run these lines in interactive mode (you can copy-and-paste them but you'll have to make them specific to yourself).
 ```
-  library(usethis, gitcreds)
-
-  #if that doesn't work, install the packages and try the previous    line again.
+  #You need to install packages before they can use them
   install.packages("usethis")  #These should only be needed once
   install.packages("gitcreds") 
   
-  ```
+  library(usethis, gitcreds)
+
+```
 
 -  Let git know about your github username and email by editing this as appropriate and entering it into the Console:
 
@@ -74,7 +74,7 @@ paste in the token from the last step.  If you picked this token to have a 6 mon
 
 # Getting started
 
-Each of your assignments will begin with the following steps. You can always refer back to this lab (or other labs) for a detailed list of the steps involved for getting started with an assignment.
+Each of your assignments will begin with the following steps. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.
 
 This part you will do every time you have an assignment or lab.
 

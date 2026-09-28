@@ -21,7 +21,7 @@ MW 11:00-12:40, SRB 1404
 <br>
 **Instructor**: Tanzy Love
 <br>
-**Website**: https://bst-urmc.github.io/bst430-fall2026-site/
+**Website**: https://bst-urmc.github.io/bst430-fall2026-site/docs/index.html
 <br>
 [**Syllabus**](static/syllabus430-2026.pdf)
 
@@ -35,14 +35,14 @@ MW 11:00-12:40, SRB 1404
     1. [install GIT](https://happygitwithr.com/install-git.html)
     2. [install *base* R](https://cran.r-project.org/)
     3. [install RStudio](https://www.rstudio.com/products/rstudio/download/#download)
-    * Lab 0 [instructions](hw_lab_instruction/lab00-demonstration/lab00-hello-class.html) and repo (accept GH classroom invite in Blackboard).
 1. [Meet the toolkit](lecture/l01-meet-toolkit.html)
+    * Lab 0 [instructions](hw_lab_instruction/lab00-demonstration/lab00-hello-class.html) and repo (accept GH classroom [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab0/accept)). Not Due.
+    * HW 1 assigned.  [instructions](hw_lab_instruction/hw-01-airbnb/hw-01-airbnb.html) and repo (accept GH classroom [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw-1/accept)).  Due 5pm EDT, Oct 12.
 <!-- 2. [ggplot(i)](lecture/l02-ggplot2-i.html) -->
 <!--     * Lab 1 [instructions](hw_lab_instruction/lab01-hello-r/lab01-hello-r.html) and repo (accept GH classroom [invite](https://classroom.github.com/a/VJwscJG1)). Due 5pm, Sept 11. -->
 <!--     * Lab 1 [solutions](hw_lab_instruction/lab01-hello-r/lab01.html) -->
 <!-- 3.  [dplyr(i)](lecture/l03-transform-dplyr-i.html) -->
 <!--     * Continue working on Lab 1 -->
-<!--     * HW 1 assigned.  [instructions](hw_lab_instruction/hw-01-airbnb/hw-01-airbnb.html) and repo (accept GH classroom [invite](https://classroom.github.com/a/DSGIBgl4)).  Due 5pm EDT, Sept 16. -->
 <!--     * HW 1 [solutions](hw_lab_instruction/hw-01-airbnb/hw-01.html) -->
 <!-- 4.  [Data types in R](lecture/l04-data-types.html). -->
 <!--     *  [Lab 2](hw_lab_instruction/lab02-merge-conflict/lab02-merge-conflict.html). You will need to accept the [invitation](https://classroom.github.com/a/d0eW0EO8). -->

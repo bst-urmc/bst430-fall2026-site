@@ -29,7 +29,7 @@ options(htmltools.dir.version = FALSE)
 
 ## Class website
 
-https://bst-urmc.github.io/bst430-fall2024-site/
+https://bst-urmc.github.io/bst430-fall2026-site/
 
 **Lecture, homeworks and lab will be provided here**
 
@@ -45,12 +45,14 @@ https://learn.rochester.edu
 
 -  Tanzy_Love@urmc.rochester.edu
 -  See syllabus for additional professors' contact
--  For assignments, you are encouraged to use github issues (to be discussed)
+-  For assignments, you can email or discuss in/after class.
 -  For private matters (grading disputes, etc), use email.
 
 ### TAs
 
-[TJ Weaver](Joshua_Marvald@URMC.Rochester.edu) will be your TA.  He will assist with grading, and offer an office hour.
+[Lucy Langenberg](lucy_langenberg@URMC.Rochester.edu) and [James Hopham](james_hopham@URMC.Rochester.edu)
+will be your TAs.  They will assist with grading, and offer an office hour.
+
 
 ---
 
@@ -68,7 +70,9 @@ All materials are available freely online.   Some also have a deadtree version a
 
 # Proposed office hours
 
-TJ: Schedule Fridays 1:15-3:15pm.
+Office Hours: Held in SRB 4107
+- James: Mondays 12:40-1:30 pm
+- Lucy: Wednesdays 2:00-300 pm
 
 They will be in the TA room in Biostatistics, on the 4th floor of SRB.
 
@@ -80,14 +84,14 @@ The instructors are available to set up individual appointments by email.
 
 R (and programming) fundamentals with a data science and statistics emphasis. Collaborative and reproducible programming.
 
--  Homework and labs (60%)
+-  Homework and labs (50%)
 .small[~weekly.  Homework will be completed  independently, out-of-class.  Labs will occur in-class and may be completed in groups.]
--  Participation / Quizzes (10%)
+-  Participation / Quizzes (5%)
 .small[Actively attending class, completing periodic quizzes (delivered in-class) to check understanding.]
--  Take-home final (30%)
-.small[An open book, no-collaboration-permitted final will be assigned on November 4, and will be due 24 hours later.]
+-  Take-home final (20%)
+.small[An open book, no-collaboration-permitted final will be assigned finals week, and will be due 24 hours later.]
 
-**Then** the final credit of this class will cover SAS coding.
+**Also** 25% credit of this class will cover SAS coding.
 
 ---
 
@@ -98,6 +102,7 @@ R (and programming) fundamentals with a data science and statistics emphasis. Co
 * Homework will be posted, turned-in, and graded on github classrooms.
 * We will shortly discuss logistics of this and how your use of this will be a component of your grade
 * I will sometimes accept a late assignments if I see progress and a consistent commit history in that assignment. If I do not see any progress in an assignment, I will not accept a late submission.
+* You get two late days for assignments (not the exam) with no need for a reason
 
 ---
 
@@ -105,7 +110,7 @@ R (and programming) fundamentals with a data science and statistics emphasis. Co
 
 1.  You may generally work together<sup>1</sup>.
 2.  You may generally google it, but cite your sources and see the next item.
-3.  Write your own solutions and *own code*.  **This generally means no copy-paste!**  Let's look at [the syllabus](../static/syllabus430-2024.pdf) for complete details.
+3.  Write your own solutions and *own code*.  **This generally means no copy-paste!**  Let's look at [the syllabus](../static/syllabus430-2026.pdf) for complete details.
 4.  Exception: labs, which will be marked as such, are collaborative within each group.
 
 
