@@ -1,4 +1,4 @@
-You probably want to be [here](https://bst-urmc.github.io/bst430-fall2026-site/)
+You probably want to be [here](https://bst-urmc.github.io/bst430-fall2026-site/docs/index.html)
 
 # Notes
 
