@@ -105,8 +105,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -114,16 +114,9 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -170,7 +163,7 @@ pre code {
 
 <h1 class="title toc-ignore">Lab 01 - Hello R!</h1>
 <h4 class="author">Mine Cetinkaya-Rundel and colleagues</h4>
-<h4 class="date">2018-01-18 (updated 2022-09-15 by TL)</h4>
+<h4 class="date">2018-01-18 (updated 2026-09-29 by TL)</h4>
 
 </div>
 
@@ -192,65 +185,49 @@ programmer. Before we get to that stage, however, you need to build some
 basic fluency in R. Today we begin with the fundamental building blocks
 of R and RStudio: the interface, reading in data, and basic
 commands.</p>
+<!-- # Getting started -->
+<!-- Each of your assignments will begin with the following steps. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment. -->
+<!-- # Housekeeping -->
+<!-- ```{marginfigure} -->
+<!-- Your email address is the address tied to your GitHub account and your name should be first and last name. -->
+<!-- ``` -->
+<!-- Before we can get started we need to take care of some required housekeeping. -->
+<!-- These should only need to be done once, or maybe once a month for the PAT. -->
+<!-- Specifically,  we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name. -->
+<!-- - Install GIT, R, Rstudio (see the Resources on the homepage for links). -->
+<!-- - Open RStudio and go to the **Console** for these one-off bits. -->
+<!-- Run these lines in interactive mode (you can copy-and-paste them but you'll have to make them specific to yourself). -->
+<!-- ``` -->
+<!--   library(usethis, gitcreds) -->
+<!--   #if that doesn't work, install the packages and try the previous    line again. -->
+<!--   install.packages("usethis")  #These should only be needed once -->
+<!--   install.packages("gitcreds")  -->
+<!--   ``` -->
+<!-- -  Let git know about your github username and email by editing this as appropriate and entering it into the Console: -->
+<!--   I put  -->
+<!--   ``` -->
+<!--   usethis::use_git_config( -->
+<!--   scope = "user", -->
+<!--   user.name = "Tanzy Love", -->
+<!--   user.email = "Tanzy_Love@urmc.rochester.edu") -->
+<!--   ``` -->
+<!-- -  Next, we need to set up a personal access token so that you can write from rstudio cloud to github. To do this, enter use the following command into the Console: -->
+<!--    ``` -->
+<!--    usethis::create_github_token() -->
+<!--    ``` -->
+<!-- Follow the instructions.  **Be sure to save the PAT in a password manager**, you will have to re-enter it, depending on your set-up. -->
+<!--    ``` -->
+<!--    gitcreds::gitcreds_set() -->
+<!--    ``` -->
+<!-- paste in the token from the last step.  If you picked this token to have a 6 month expiration, you shouldn't have to do this again. -->
 </div>
 <div id="getting-started" class="section level1">
-<h1>Getting started</h1>
-<p>Each of your assignments will begin with the following steps. You can
-always refer back to this lab for a detailed list of the steps involved
-for getting started with an assignment.</p>
-</div>
-<div id="housekeeping" class="section level1">
-<h1>Housekeeping</h1>
-<pre class="marginfigure"><code>Your email address is the address tied to your GitHub account and your name should be first and last name.</code></pre>
-<p>Before we can get started we need to take care of some required
-housekeeping. These should only need to be done once, or maybe once a
-month for the PAT.</p>
-<p>Specifically, we need to configure your git so that RStudio can
-communicate with GitHub. This requires two pieces of information: your
-email address and your name.</p>
-<ul>
-<li><p>Install GIT, R, Rstudio (see the Resources on the homepage for
-links).</p></li>
-<li><p>Open RStudio and go to the <strong>Console</strong> for these
-one-off bits. Run these lines in interactive mode (you can
-copy-and-paste them but you’ll have to make them specific to
-yourself).</p></li>
-</ul>
-<pre><code>  library(usethis, gitcreds)
-
-  #if that doesn&#39;t work, install the packages and try the previous    line again.
-  install.packages(&quot;usethis&quot;)  #These should only be needed once
-  install.packages(&quot;gitcreds&quot;) 
-  </code></pre>
-<ul>
-<li>Let git know about your github username and email by editing this as
-appropriate and entering it into the Console:</li>
-</ul>
-<p>I put</p>
-<pre><code>usethis::use_git_config(
-scope = &quot;user&quot;,
-user.name = &quot;Tanzy Love&quot;,
-user.email = &quot;Tanzy_Love@urmc.rochester.edu&quot;)</code></pre>
-<ul>
-<li><p>Next, we need to set up a personal access token so that you can
-write from rstudio cloud to github. To do this, enter use the following
-command into the Console:</p>
-<pre><code>usethis::create_github_token()</code></pre>
-<p>Follow the instructions. <strong>Be sure to save the PAT in a
-password manager</strong>, you will have to re-enter it, depending on
-your set-up.</p>
-<pre><code>gitcreds::gitcreds_set()</code></pre>
-<p>paste in the token from the last step. If you picked this token to
-have a 6 month expiration, you shouldn’t have to do this again.</p></li>
-</ul>
-</div>
-<div id="getting-started-1" class="section level1">
 <h1>Getting started</h1>
 <p>Each of your assignments will begin with the following steps. You can
 always refer back to this lab (or other labs) for a detailed list of the
 steps involved for getting started with an assignment.</p>
 <p>This part you will do every time you have an assignment or lab.</p>
-<p><img src="lab00-demonstration/img/copy-assignment-repo-link.PNG" width="420" /></p>
+<p><img src="../lab00-demonstration/img/copy-assignment-repo-link.png" alt="" width="420" /></p>
 <ul>
 <li><p>Click on the assignment link that you should have received in
 your email to create your GitHub repository (which we’ll refer to as
@@ -259,29 +236,11 @@ you can build on to complete your assignment.</p></li>
 <li><p>Note that it’s not in <em>your</em> GitHub folder, it’s in the
 coursespace (so I can see it but you can’t see each other’s) and it is a
 copy of the template that I made to be here.</p></li>
-<li><p>On GitHub, click on the green <strong>Clone or download</strong>
-button, select <strong>Use HTTPS</strong> (this might already be
-selected by default, and if it is, you’ll see the text <strong>Clone
-with HTTPS</strong> as in the image below). Click on the clipboard icon
-to copy the repo URL. It will start with the class “bst-urmc” and end
-with your username “tanzylove” (for me) and the middle is based on what
-the assignment is named.</p></li>
-<li><p>Go to RStudio clone the assignment repository. This is the one
-copy and paste into RStudio part that you will do each time you start to
-work.</p></li>
-</ul>
-<pre><code>###  #&#39;s comment out lines in R code
-
-#you need to change this to the right repository and location for you and your local machine
-usethis::create_from_github(&quot;https://github.com/bst-urmc/lab-1-tanzylove&quot;,
-   destdir=&quot;~/Documents/work/teaching/BST430/&quot;)
-</code></pre>
-<ul>
-<li>Copy and paste the URL of your assignment repo into the
-function</li>
-<li>If you need to login to github, a login box should pop up.</li>
-<li>It opens up a new copy of RStudio with all the files from the
-repository in question.</li>
+<li><p>On GitHub, click on the green button, select <strong>Use
+HTTPS</strong> (this should be already selected by default). Click on
+the clipboard icon to copy the repo URL. It will start with the class
+“bst-urmc” and end with your username OR group name “tanzylove” (for me)
+and the middle is based on what the assignment is named.</p></li>
 </ul>
 </div>
 <div id="packages" class="section level1">
@@ -322,7 +281,7 @@ help later in the lab.</p>
   tufte::tufte_html:</code></pre>
 <p>Open the R Markdown (Rmd) file in your project, change the author
 name to your name, and knit the document.</p>
-<p><img src="lab01-hello-r/img/yaml-raw-to-rendered.png" width="930" /></p>
+<p><img src="img/yaml-raw-to-rendered.png" alt="" width="930" /></p>
 </div>
 <div id="commiting-changes" class="section level2">
 <h2>Commiting changes:</h2>
@@ -334,7 +293,7 @@ the last committed state of the document and its current state that
 includes your changes. If you’re happy with these changes, write “Update
 author name” in the <strong>Commit message</strong> box and hit
 <strong>Commit</strong>.</p>
-<p><img src="lab01-hello-r/img/update-author-name-commit.png" width="889" /></p>
+<p><img src="img/update-author-name-commit.png" alt="" width="889" /></p>
 <p>You don’t have to commit after every change, this would get quite
 cumbersome. You should consider committing states that are
 <em>meaningful to you</em> for inspection, comparison, or restoration.
@@ -391,7 +350,7 @@ done, commit your changes with the commit message “Added answer for Ex
   count(dataset) %&gt;%
   print(13)</code></pre>
 <pre><code>## # A tibble:
-## #   13 x 2
+## #   13 × 2
 ##    dataset   
 ##    &lt;chr&gt;     
 ##  1 away      
@@ -407,8 +366,7 @@ done, commit your changes with the commit message “Added answer for Ex
 ## 11 v_lines   
 ## 12 wide_lines
 ## 13 x_shape   
-## # ... with 1
-## #   more
+## # ℹ 1 more
 ## #   variable:
 ## #   n &lt;int&gt;</code></pre>
 <pre class="marginfigure"><code>Matejka, Justin, and George Fitzmaurice. &quot;Same stats, different graphs: Generating datasets with varied appearance and identical statistics through simulated annealing.&quot; Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems. ACM, 2017.</code></pre>
@@ -461,7 +419,7 @@ we want to use to represent each observation in the data. In this case
 we want these to be points,m hence <code>geom_point</code>.</p>
 <pre class="r"><code>ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()</code></pre>
-<p><img src="lab01-hello-r_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="lab01-hello-r_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" /></p>
 <p>If this seems like a lot, it is. And you will learn about the
 philosophy of building data visualizations in layer in detail next week.
 For now, follow along with the code that is provided.</p>
@@ -481,7 +439,7 @@ coefficient between <code>x</code> and <code>y</code>.</p>
 <pre class="marginfigure"><code>Start with `dino_data` and calculate a summary statistic that we will call `r` as the `cor`relation between `x` and `y`.</code></pre>
 <pre class="r"><code>dino_data %&gt;%
   summarize(r = cor(x, y))</code></pre>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##         r
 ##     &lt;dbl&gt;
 ## 1 -0.0645</code></pre>
@@ -524,7 +482,7 @@ summary correlation coefficients.</p>
   print(13)</code></pre>
 <p>You’re done with the data analysis exercises, but we’d like you to do
 two more things:</p>
-<p><img src="lab01-hello-r/img/fig-resize-global.png" width="468" /></p>
+<p><img src="img/fig-resize-global.png" alt="" width="468" /></p>
 <ul>
 <li><strong>Resize your figures:</strong></li>
 </ul>
@@ -534,7 +492,7 @@ box go to the Figures tab and change the height and width of the
 figures, and hit OK when done. Then, knit your document and see how you
 like the new sizes. Change and knit again and again until you’re happy
 with the figure sizes. Note that these values get saved in the YAML.</p>
-<p><img src="lab01-hello-r/img/fig-resize-local.png" width="634" /></p>
+<p><img src="img/fig-resize-local.png" alt="" width="634" /></p>
 <p>You can also use different figure sizes for different figures. To do
 so click on the gear icon within the chunk where you want to make a
 change. Turn on “Use custom figure size” and enter the size for this
@@ -543,7 +501,7 @@ figure. Changing the figure sizes added new options to these chunks:
 by defining different values directly in your R Markdown document as
 well with code like this:</p>
 <pre><code>knitr::opts_chunk(fig.width=3, fig.height=3)</code></pre>
-<p><img src="lab01-hello-r/img/theme-highlight.png" width="467" /></p>
+<p><img src="img/theme-highlight.png" alt="" width="467" /></p>
 <ul>
 <li><strong>Change the look of your report:</strong></li>
 </ul>

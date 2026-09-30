@@ -40,56 +40,56 @@ An additional goal is to introduce you to git and GitHub, which is the collabora
 As the labs progress, you are encouraged to explore beyond what the labs dictate; a willingness to experiment will make you a much better programmer. Before we get to that stage, however, you need to build some basic fluency in R. Today we begin with the fundamental building blocks of R and RStudio: the interface, reading in data, and basic commands.
 
 
-# Getting started
+<!-- # Getting started -->
 
-Each of your assignments will begin with the following steps. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment.
+<!-- Each of your assignments will begin with the following steps. You can always refer back to this lab for a detailed list of the steps involved for getting started with an assignment. -->
 
 
-# Housekeeping
+<!-- # Housekeeping -->
 
-```{marginfigure}
-Your email address is the address tied to your GitHub account and your name should be first and last name.
-```
+<!-- ```{marginfigure} -->
+<!-- Your email address is the address tied to your GitHub account and your name should be first and last name. -->
+<!-- ``` -->
 
-Before we can get started we need to take care of some required housekeeping.
-These should only need to be done once, or maybe once a month for the PAT.
+<!-- Before we can get started we need to take care of some required housekeeping. -->
+<!-- These should only need to be done once, or maybe once a month for the PAT. -->
 
-Specifically,  we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name.
+<!-- Specifically,  we need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your email address and your name. -->
 
-- Install GIT, R, Rstudio (see the Resources on the homepage for links).
+<!-- - Install GIT, R, Rstudio (see the Resources on the homepage for links). -->
 
-- Open RStudio and go to the **Console** for these one-off bits.
-Run these lines in interactive mode (you can copy-and-paste them but you'll have to make them specific to yourself).
-```
-  library(usethis, gitcreds)
+<!-- - Open RStudio and go to the **Console** for these one-off bits. -->
+<!-- Run these lines in interactive mode (you can copy-and-paste them but you'll have to make them specific to yourself). -->
+<!-- ``` -->
+<!--   library(usethis, gitcreds) -->
 
-  #if that doesn't work, install the packages and try the previous    line again.
-  install.packages("usethis")  #These should only be needed once
-  install.packages("gitcreds") 
-  
-  ```
+<!--   #if that doesn't work, install the packages and try the previous    line again. -->
+<!--   install.packages("usethis")  #These should only be needed once -->
+<!--   install.packages("gitcreds")  -->
 
--  Let git know about your github username and email by editing this as appropriate and entering it into the Console:
+<!--   ``` -->
 
-  I put 
+<!-- -  Let git know about your github username and email by editing this as appropriate and entering it into the Console: -->
 
-  ```
-  usethis::use_git_config(
-  scope = "user",
-  user.name = "Tanzy Love",
-  user.email = "Tanzy_Love@urmc.rochester.edu")
-  ```
+<!--   I put  -->
 
--  Next, we need to set up a personal access token so that you can write from rstudio cloud to github. To do this, enter use the following command into the Console:
-   ```
-   usethis::create_github_token()
-   ```
-Follow the instructions.  **Be sure to save the PAT in a password manager**, you will have to re-enter it, depending on your set-up.
+<!--   ``` -->
+<!--   usethis::use_git_config( -->
+<!--   scope = "user", -->
+<!--   user.name = "Tanzy Love", -->
+<!--   user.email = "Tanzy_Love@urmc.rochester.edu") -->
+<!--   ``` -->
 
-   ```
-   gitcreds::gitcreds_set()
-   ```
-paste in the token from the last step.  If you picked this token to have a 6 month expiration, you shouldn't have to do this again.
+<!-- -  Next, we need to set up a personal access token so that you can write from rstudio cloud to github. To do this, enter use the following command into the Console: -->
+<!--    ``` -->
+<!--    usethis::create_github_token() -->
+<!--    ``` -->
+<!-- Follow the instructions.  **Be sure to save the PAT in a password manager**, you will have to re-enter it, depending on your set-up. -->
+
+<!--    ``` -->
+<!--    gitcreds::gitcreds_set() -->
+<!--    ``` -->
+<!-- paste in the token from the last step.  If you picked this token to have a 6 month expiration, you shouldn't have to do this again. -->
 
 # Getting started
 
@@ -98,28 +98,14 @@ Each of your assignments will begin with the following steps. You can always ref
 This part you will do every time you have an assignment or lab.
 
 ```{r paste-gh-repo-url, fig.margin = TRUE, echo = FALSE, fig.width=5}
-knitr::include_graphics("lab00-demonstration/img/copy-assignment-repo-link.png")
+knitr::include_graphics("../lab00-demonstration/img/copy-assignment-repo-link.png")
 ```
 
 - Click on the assignment link that you should have received in your email to create your GitHub repository (which we'll refer to as "repo" going forward) for the assignment. This repo contains a template you can build on to complete your assignment.
 
 - Note that it's not in *your* GitHub folder, it's in the coursespace (so I can see it but you can't see each other's) and it is a copy of the template that I made to be here.
 
-- On GitHub, click on the green **Clone or download** button, select **Use HTTPS** (this might already be selected by default, and if it is, you'll see the text **Clone with HTTPS** as in the image below). Click on the clipboard icon to copy the repo URL. It will start with the class "bst-urmc" and end with your username "tanzylove" (for me) and the middle is based on what the assignment is named.
-
-- Go to RStudio clone the assignment repository. This is the one copy and paste into RStudio part that you will do each time you start to work. 
-```
-###  #'s comment out lines in R code
-
-#you need to change this to the right repository and location for you and your local machine
-usethis::create_from_github("https://github.com/bst-urmc/lab-1-tanzylove",
-   destdir="~/Documents/work/teaching/BST430/")
-
-```
-
-- Copy and paste the URL of your assignment repo into the function
-- If you need to login to github, a login box should pop up.
-- It opens up a new copy of RStudio with all the files from the repository in question.
+- On GitHub, click on the green button, select **Use HTTPS** (this should be already selected by default). Click on the clipboard icon to copy the repo URL. It will start with the class "bst-urmc" and end with your username OR group name "tanzylove" (for me) and the middle is based on what the assignment is named.
 
 # Packages
 
@@ -168,7 +154,7 @@ output:
 Open the R Markdown (Rmd) file in your project, change the author name to your name, and knit the document.
 
 ```{r yaml-raw-to-rendered, fig.fullwidth=TRUE, echo = FALSE}
-knitr::include_graphics("lab01-hello-r/img/yaml-raw-to-rendered.png")
+knitr::include_graphics("img/yaml-raw-to-rendered.png")
 ```
 
 ## Commiting changes:
@@ -178,7 +164,7 @@ Then Go to the Git pane in your RStudio.
 If you have made changes to your Rmd file, you should see it listed here. Click on it to select it in this list and then click on **Diff**. This shows you the *diff*erence between the last committed state of the document and its current state that includes your changes. If you're happy with these changes, write "Update author name" in the **Commit message** box and hit **Commit**.
 
 ```{r update-author-name-commit, fig.fullwidth=TRUE, echo = FALSE}
-knitr::include_graphics("lab01-hello-r/img/update-author-name-commit.png")
+knitr::include_graphics("img/update-author-name-commit.png")
 ```
 
 You don't have to commit after every change, this would get quite cumbersome. You should consider committing states that are *meaningful to you* for inspection, comparison, or restoration. In the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.
@@ -299,7 +285,7 @@ datasaurus_dozen %>%
 You're done with the data analysis exercises, but we'd like you to do two more things:
 
 ```{r fig-resize-global, fig.margin = TRUE, echo = FALSE, fig.width=3}
-knitr::include_graphics("lab01-hello-r/img/fig-resize-global.png")
+knitr::include_graphics("img/fig-resize-global.png")
 ```
 
 - **Resize your figures:** 
@@ -307,7 +293,7 @@ knitr::include_graphics("lab01-hello-r/img/fig-resize-global.png")
 Click on the gear icon in on top of the R Markdown document, and select "Output Options..." in the dropdown menu. In the pop up dialogue box go to the Figures tab and change the height and width of the figures, and hit OK when done. Then, knit your document and see how you like the new sizes. Change and knit again and again until you're happy with the figure sizes. Note that these values get saved in the YAML.
 
 ```{r fig-resize-local, fig.margin = TRUE, echo = FALSE, fig.width=3}
-knitr::include_graphics("lab01-hello-r/img/fig-resize-local.png")
+knitr::include_graphics("img/fig-resize-local.png")
 ```
 
 You can also use different figure sizes for different figures. To do so click on the gear icon within the chunk where you want to make a change. Turn on "Use custom figure size" and enter the size for this figure. Changing the figure sizes added new options to these chunks: `fig.width` and `fig.height`. You can change them by defining different values directly in your R Markdown document as well with code like this:
@@ -317,7 +303,7 @@ knitr::opts_chunk(fig.width=3, fig.height=3)
 ```
 
 ```{r theme-highlight, fig.margin = TRUE, echo = FALSE, fig.width=3}
-knitr::include_graphics("lab01-hello-r/img/theme-highlight.png")
+knitr::include_graphics("img/theme-highlight.png")
 ```
 
 - **Change the look of your report:** 
