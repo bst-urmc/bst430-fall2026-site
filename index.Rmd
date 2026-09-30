@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 MW 11:00-12:40, SRB 1404
 <br>
-**Instructor**: Tanzy Love
+**Instructor**: Tanzy Love (and other lecturers)
 <br>
 **Website**: https://bst-urmc.github.io/bst430-fall2026-site/
 <br>
