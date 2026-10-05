@@ -27,7 +27,8 @@ output:
 library(tidyverse)
 # library(magick)
 library(knitr)
-library(emo)
+#library(emo) # not working Oct 2026
+library(emoji)
 # library(mosaicData)
 # library(openintro)
 library(DT)
@@ -67,9 +68,9 @@ dev.off <- function(){
 
 ## Announcements
 
-- HW1 assigned, due next Monday 5pm.
+- HW1 due next Monday 5pm.
 - Reminder: lab 1 due Wednesday 5pm. 
-- TJ will have office hours Friday, in the TA office.
+- Office hours Monday and Wednesday, in the TA office.
 - Send me an email if you need help.
 
 ---
@@ -79,7 +80,7 @@ dev.off <- function(){
 - The pipe
 - Manipulating data frames.
 - Calculating summary statistics.
-- Using the basic functions of dplyr
+- Using the basic functions of dplyr.
 
 ---
 class: center, middle
@@ -802,7 +803,7 @@ flights %>% slice_head(n = 5) %>% select(dest)
 ]
 
 - Don't get `pull` happy when wrangling data! It's rarely needed while you are using tidyverse functions.
-- But always `r emo::ji("arrow_down")` `Pull` before starting your work when collaborating on GitHub.
+- But always `r emoji("arrow down")` `Pull` before starting your work when collaborating on GitHub.
 
 ---
 class: middle, center
