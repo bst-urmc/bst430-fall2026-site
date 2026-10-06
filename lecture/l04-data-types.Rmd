@@ -113,14 +113,18 @@ cat_lovers %>%
 .midi[
 ```{r}
 cat_lovers %>%
-  mutate(number_of_cats = case_when(
+  mutate(number_of_cats1 = case_when(
     name == "Ginger Clark" ~ 2,
     name == "Doug Bass"    ~ 3,
     TRUE                   ~ as.numeric(number_of_cats)
     )) %>%
-  summarise(mean_cats = mean(number_of_cats))
+  summarise(mean_cats = mean(number_of_cats1))
 ```
 ]
+
+<!-- ??? -->
+
+<!-- This generates a warning for unknown (case_when specific) reasons -->
 
 ---
 
@@ -129,19 +133,40 @@ cat_lovers %>%
 ```{r}
 cat_lovers %>%
   mutate(
-    number_of_cats = case_when(
+    number_of_cats2 = case_when(
       name == "Ginger Clark" ~ "2",
       name == "Doug Bass"    ~ "3",
       TRUE                   ~ number_of_cats
       ),
-    number_of_cats = as.numeric(number_of_cats)
+    number_of_cats2 = as.numeric(number_of_cats2)
     ) %>%
-  summarise(mean_cats = mean(number_of_cats))
+  summarise(mean_cats = mean(number_of_cats2))
 ```
+---
 
-<!-- ??? -->
+## Double Check
 
-<!-- This generates a warning for unknown (case_when specific) reasons -->
+.small[
+```{r echo=FALSE, warning=FALSE}
+options(htmltools.preserve.raw = FALSE)
+cat_lovers %>%
+  mutate(number_of_cats1 = case_when(
+    name == "Ginger Clark" ~ 2,
+    name == "Doug Bass"    ~ 3,
+    TRUE                   ~ as.numeric(number_of_cats)
+    )) %>%
+  mutate(
+    number_of_cats2 = case_when(
+      name == "Ginger Clark" ~ "2",
+      name == "Doug Bass"    ~ "3",
+      TRUE                   ~ number_of_cats
+      ),
+    number_of_cats2 = as.numeric(number_of_cats2)
+    ) %>%
+  datatable()
+```
+]
+
 ---
 
 ## Now that we know what we're doing...
@@ -163,7 +188,8 @@ cat_lovers = cat_lovers %>% #<<
 ## Moral of the story
 
 - If your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.
-- Go in and investigate your data, apply the fix, *save your data*, live happily ever after.
+- Go in and investigate your data, apply the fix, *save your code and data*, live happily ever after.
+- Your code should document what changes you made and why (unless obvious)
 
 ---
 
@@ -341,22 +367,24 @@ length(empty_chr)
 
 Lists can also be concatenated using the `c()` function.
 
-.pull-left[
 ```{r}
 list1 = list(1, 2, 3)
-list2 = list(
-  c("Hi!", "I'm a vector", 
-    "nested inside", "a list"))
+list2 = list( c("Hi!", "I'm a vector", "nested inside", "a list"))
 cat12 = c(list1, list2)
 ```
-]
-.pull-right[
+
+Compare to `list(list1, list2)` which would nest the two lists rather than join them.
+
+.pull-left[
 ```{r}
 str(cat12)
 ```
 ]
-
-Compare to `list(list1, list2)` which would nest the two lists rather than join them.
+.pull-right[
+```{r}
+str(list(list1, list2))
+```
+]
 ---
 
 ## length(c(x, y)) = length(x) + length(y)
@@ -365,11 +393,12 @@ Compare to `list(list1, list2)` which would nest the two lists rather than join 
 length(list1)
 length(list2)
 length(c(list1, list2))
+length(list(list1, list2))
 ```
 
-.question[
-What would `length(c(list1, list2))` be when `list1 = list(c(1, 2, 3))`?
-]
+<!-- .question[ -->
+<!-- What would `length(c(list1, list2))` be when `list1 = list(c(1, 2, 3))`? -->
+<!-- ] -->
 ---
 
 
