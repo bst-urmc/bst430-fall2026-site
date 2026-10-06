@@ -40,7 +40,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-09-01 (updated: 2024-09-10 by TL)
+### 2021-09-01 (updated: 2026-10-06 by TL)
 ]
 
 ---
@@ -118,7 +118,7 @@ cat_lovers %&gt;%
 ?mean
 ```
 
-&lt;img src="l04/img/mean-help.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l04/img/mean-help.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -934,7 +934,7 @@ summary(x)
 ```
 
 ```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
 ##    1.00    1.75    2.50    2.50    3.25    4.00       1
 ```
 
@@ -1267,7 +1267,8 @@ class(ggplot(starwars, aes(x = weight))+ geom_histogram())
 ```
 
 ```
-## [1] "gg"     "ggplot"
+## [1] "ggplot2::ggplot" "ggplot"          "ggplot2::gg"    
+## [4] "S7_object"       "gg"
 ```
 ]
 
@@ -1350,14 +1351,14 @@ attributes(df)
 ```
 
 ```
-## $class
-## [1] "tbl_df"     "tbl"        "data.frame"
+## $names
+## [1] "x" "y"
 ## 
 ## $row.names
 ## [1] 1 2 3
 ## 
-## $names
-## [1] "x" "y"
+## $class
+## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
 ``` r
@@ -1553,7 +1554,7 @@ ggplot(cat_lovers, mapping = aes(x = handedness)) +
   geom_bar()
 ```
 
-&lt;img src="l04-data-types_files/figure-html/unnamed-chunk-70-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l04-data-types_files/figure-html/unnamed-chunk-70-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1572,7 +1573,7 @@ ggplot(cat_lovers, mapping = aes(x = handedness)) +
   geom_bar()
 ```
 
-&lt;img src="l04-data-types_files/figure-html/unnamed-chunk-72-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l04-data-types_files/figure-html/unnamed-chunk-72-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1621,10 +1622,10 @@ This lecture contains materials adapted from  [Mine Çetinkaya-Rundel and collea
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

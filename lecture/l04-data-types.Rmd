@@ -92,7 +92,7 @@ glimpse(cat_lovers)
 ```
 --
 
-.large[.center[`r emo::ji("bulb")`!]]
+.large[.center[`r emoji::emoji("bulb")`!]]
 
 ---
 
@@ -513,7 +513,7 @@ pi / 0
 
 ---
 
-## `NA`s are special `r emo::ji('snowflake')`s
+## `NA`s are special `r emoji::emoji('snowflake')`s
 
 ```{r}
 x = c(1, 2, 3, 4, NA)

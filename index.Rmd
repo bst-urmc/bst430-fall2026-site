@@ -43,10 +43,10 @@ MW 11:00-12:40, SRB 1404
     * Lab 1 [instructions](hw_lab_instruction/lab01-hello-r/lab01-hello-r.html) and repo (accept GH classroom [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hello-class/accept)). Due 5pm, Oct 7.
 <!--     * Lab 1 [solutions](hw_lab_instruction/lab01-hello-r/lab01.html) -->
 3.  [dplyr(i)](lecture/l03-transform-dplyr-i.html)
-<!--     * Continue working on Lab 1 -->
-<!-- 4.  [Data types in R](lecture/l04-data-types.html). -->
-<!--     *  [Lab 2](hw_lab_instruction/lab02-merge-conflict/lab02-merge-conflict.html). You will need to accept the [invitation](https://classroom.github.com/a/d0eW0EO8). -->
-<!-- Due 5pm, Sept 18. -->
+    * Continue working on Lab 1
+4.  [Data types in R](lecture/l04-data-types.html).
+    *  [Lab 2](hw_lab_instruction/lab02-merge-conflict/lab02-merge-conflict.html). You will need to accept the [invitation](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab2/accept).
+Due 5pm, Oct 14.
 <!--     * Lab 2 [solutions](hw_lab_instruction/lab02-merge-conflict/lab-02.html) -->
 <!-- 5.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html). -->
 <!-- 6.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html) -->
