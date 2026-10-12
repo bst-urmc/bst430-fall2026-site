@@ -34,14 +34,10 @@ First, open the R Markdown document `hw02.Rmd` and Knit it.
 Make sure it compiles without errors.
 The output will be in the file markdown `.md` file with the same name.
 
-## Warm up
-
-Before we introduce the data, let's warm up with some simple exercises.
-
 -   Update the YAML, changing the author name to your name, and **knit** the document.
--   Commit your changes with a meaningful commit message.
--   Push your changes to GitHub.
--   Go to your repo on GitHub and confirm that your changes are visible in your Rmd **and** md files. If anything is missing, commit and push again.
+<!-- -   Commit your changes with a meaningful commit message. -->
+<!-- -   Push your changes to GitHub. -->
+-   When you are done, go to your repo on GitHub and confirm that your changes are visible in your Rmd **and** md files. If anything is missing, commit and push again.
 
 ## Packages
 
@@ -63,7 +59,7 @@ crashes = vroom('data/ny_collisions_2018_2019.csv.gz')
 ```
 
 ```{r load-data, eval = FALSE}
-crashes = vroom("https://urmc-bst.github.io/bst430-fall2024-site/hw_lab_instruction/hw02-accidents/data/ny_collisions_2018_2019.csv.gz")
+crashes = vroom("https://urmc-bst.github.io/bst430-fall2026-site/hw_lab_instruction/hw02-accidents/data/ny_collisions_2018_2019.csv.gz")
 ```
 
 You can find out more about the dataset in the NY open data portal:  https://data.ny.gov/Transportation/Motor-Vehicle-Crashes-Case-Information-Three-Year-/e8ky-4vqe .  There's a detailed data dictionary [here](https://data.ny.gov/api/views/e8ky-4vqe/files/991fc5ad-3c1d-4eb1-908a-86343907be58?download=true&filename=NYSDMV_Crashes_CaseInformation_DataDictionary.pdf).
@@ -140,4 +136,4 @@ Hint: use `lubridate::month`to extract the numeric index of the month.
 ## Rubric: 29 points total
 
 *  8 ex @ 3 pts per
-*  5 points github commits
+*  5 points at least three meaningful github commits

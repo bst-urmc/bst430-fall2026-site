@@ -297,7 +297,7 @@ of flow control when we discuss iteration with `for`, `while`, and `repeat`.
 
 ```{r}
 work_without_question = function(condition){
-  print(str_c("Good capitalistic worker bee ", emo::ji("honey_pot")))
+  print(str_c("Good capitalistic worker bee ", emoji::emoji("honey_pot")))
 }
 
 life_crisis = function(condition){

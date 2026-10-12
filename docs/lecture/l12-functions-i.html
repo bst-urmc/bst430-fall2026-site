@@ -30,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-10-13 (updated: 2024-10-16 by TL)
+### 2021-10-13 (updated: 2026-10-12 by TL)
 ]
 
 ---
@@ -423,7 +423,7 @@ library(gapminder)
 ```
 
 ```
-## Warning: package 'gapminder' was built under R version 4.4.1
+## Warning: package 'gapminder' was built under R version 4.6.1
 ```
 
 ``` r
@@ -453,7 +453,7 @@ ggplot( gapminder, aes(x = year, y = lifeExp, color = continent))  +
     fill = 'grey', width = 8, outlier.shape = NA, position = 'dodge') 
 ```
 
-&lt;img src="l12-functions-i_files/figure-html/unnamed-chunk-3-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l12-functions-i_files/figure-html/unnamed-chunk-3-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -547,7 +547,7 @@ This is related to the [Telescope Rule](https://wiki.c2.com/?TelescopeRule)
 
 ]
 .pull-right[
-&lt;img src="l12/img/spotify-howtobuildmvp.jpg" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l12/img/spotify-howtobuildmvp.jpg" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 .small[[From your ultimate guide to Minimum Viable Product ](https://blog.fastmonkeys.com/2014/06/18/minimum-viable-product-your-ultimate-guide-to-mvp-great-examples). Image attributed to the Spotify team]
 
 ]
@@ -638,7 +638,8 @@ max_minus_min(gapminder) ## hey sometimes things "just work" on data.frames!
 ```
 
 ```
-## Error in FUN(X[[i]], ...): only defined on a data frame with all numeric-alike variables
+## Error in `FUN()`:
+## ! only defined on a data frame with all numeric-alike variables
 ```
 
 ``` r
@@ -646,7 +647,8 @@ max_minus_min(gapminder$country) ## factors are kind of like integer vectors?
 ```
 
 ```
-## Error in Summary.factor(structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, : 'max' not meaningful for factors
+## Error in `Summary.factor()`:
+## ! 'max' not meaningful for factors
 ```
 
 ``` r
@@ -654,7 +656,8 @@ max_minus_min("eggplants are purple") ## i have no excuse for this one
 ```
 
 ```
-## Error in max(x) - min(x): non-numeric argument to binary operator
+## Error in `max(x) - min(x)`:
+## ! non-numeric argument to binary operator
 ```
 
 ---
@@ -717,7 +720,8 @@ max_minus_min(gapminder)
 ```
 
 ```
-## Error in max_minus_min(gapminder): is.numeric(x) is not TRUE
+## Error in `max_minus_min()`:
+## ! is.numeric(x) is not TRUE
 ```
 
 ``` r
@@ -725,7 +729,8 @@ max_minus_min(gapminder$country)
 ```
 
 ```
-## Error in max_minus_min(gapminder$country): is.numeric(x) is not TRUE
+## Error in `max_minus_min()`:
+## ! is.numeric(x) is not TRUE
 ```
 
 ``` r
@@ -733,7 +738,8 @@ max_minus_min("eggplants are purple")
 ```
 
 ```
-## Error in max_minus_min("eggplants are purple"): is.numeric(x) is not TRUE
+## Error in `max_minus_min()`:
+## ! is.numeric(x) is not TRUE
 ```
 
 ---
@@ -744,7 +750,8 @@ max_minus_min(gapminder[c('lifeExp', 'gdpPercap', 'pop')])
 ```
 
 ```
-## Error in max_minus_min(gapminder[c("lifeExp", "gdpPercap", "pop")]): is.numeric(x) is not TRUE
+## Error in `max_minus_min()`:
+## ! is.numeric(x) is not TRUE
 ```
 
 ``` r
@@ -752,7 +759,8 @@ max_minus_min(c(TRUE, TRUE, FALSE, TRUE, TRUE))
 ```
 
 ```
-## Error in max_minus_min(c(TRUE, TRUE, FALSE, TRUE, TRUE)): is.numeric(x) is not TRUE
+## Error in `max_minus_min()`:
+## ! is.numeric(x) is not TRUE
 ```
 
 And we see that it catches all of the self-inflicted damage we would like to avoid.
@@ -776,7 +784,8 @@ max_minus_min(gapminder)
 ```
 
 ```
-## Error in max_minus_min(gapminder): I am so sorry, but this function only works for numeric input!
+## Error in `max_minus_min()`:
+## ! I am so sorry, but this function only works for numeric input!
 ## You have provided an object of class: tbl_df
 ```
 
@@ -819,7 +828,7 @@ of flow control when we discuss iteration with `for`, `while`, and `repeat`.
 
 ``` r
 work_without_question = function(condition){
-  print(str_c("Good capitalistic worker bee ", emo::ji("honey_pot")))
+  print(str_c("Good capitalistic worker bee ", emoji::emoji("honey_pot")))
 }
 
 life_crisis = function(condition){
@@ -911,7 +920,7 @@ speech_page
 ```
 
 
-&lt;img src="l12/img/fm-speech-oct-23.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l12/img/fm-speech-oct-23.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -974,7 +983,7 @@ oct_23_speech
 
 --
 .pull-left[
-&lt;img src="l12/img/funct-all-things.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l12/img/funct-all-things.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 --
 .pull-right[
@@ -1392,7 +1401,8 @@ qdiff1(gapminder$lifeExp)
 ```
 
 ```
-## Error in qdiff1(gapminder$lifeExp): argument "probs" is missing, with no default
+## Error in `qdiff1()`:
+## ! argument "probs" is missing, with no default
 ```
 
 Oops! At the moment, this causes a fatal error. It can be nice to provide some reasonable default values for certain arguments. In our case, it would be crazy to specify a default value for the primary input `x`, but very kind to specify a default for `probs`.
@@ -1461,12 +1471,13 @@ qdiff3
 ```
 
 ```
-## function(x, probs = c(0, 1)) {
-##   stopifnot(is.numeric(x))
-##   the_quantiles = quantile(x, probs)
-##   max(the_quantiles) - min(the_quantiles)
+## function (x, probs = c(0, 1)) 
+## {
+##     stopifnot(is.numeric(x))
+##     the_quantiles = quantile(x, probs)
+##     max(the_quantiles) - min(the_quantiles)
 ## }
-## &lt;bytecode: 0x00000267907af238&gt;
+## &lt;bytecode: 0x000001f6ae54c770&gt;
 ```
 
 ---
@@ -1505,10 +1516,10 @@ Adapted from Jenny Bryan's STAT545 https://stat545.com/functions-part1.html and 
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

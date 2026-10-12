@@ -375,7 +375,7 @@ dmy_hms('22-Sep-2021 11:00:00')
 
 --
 
-... and you need to worry about the timezone `r emo::ji('scream_cat')`
+... and you need to worry about the timezone `r emoji::emoji('scream_cat')`
 
 
 ```{r}
@@ -424,7 +424,7 @@ plt = ggplot(flights_sml, aes(x = time, after_stat(count), fill = origin)) +
   geom_density(alpha = .5, bw = 1800) + # 30*60 seconds #<<
   scale_x_time() + 
   scale_y_continuous(sec.axis = 
-        sec_axis(trans = ~ .x/365*3600,  name = 'Departures/day/hour')) + #<<
+        sec_axis(transform = ~ .x/365*3600,  name = 'Departures/day/hour')) + #<<
   theme_minimal() +
   labs(y = "Departures/year/second")
 plt

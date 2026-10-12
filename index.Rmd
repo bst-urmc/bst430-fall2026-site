@@ -37,10 +37,10 @@ MW 11:00-12:40, SRB 1404
     3. [install RStudio](https://www.rstudio.com/products/rstudio/download/#download)
 1. [Meet the toolkit](lecture/l01-meet-toolkit.html)
     * Lab 0 [instructions](hw_lab_instruction/lab00-demonstration/lab00-hello-class.html) and repo (accept GH classroom [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab0/accept)). Not Due.
-    * HW 1 assigned.  [instructions](hw_lab_instruction/hw-01-airbnb/hw-01-airbnb.html) and repo (accept GH classroom [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw-1/accept)).  Due 5pm EDT, Oct 12..
+    * HW 1 assigned.  [instructions](hw_lab_instruction/hw-01-airbnb/hw-01-airbnb.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw-1/accept)).  Due 5pm EDT, Oct 12..
 <!--     * HW 1 [solutions](hw_lab_instruction/hw-01-airbnb/hw-01.html) -->
 2. [ggplot(i)](lecture/l02-ggplot2-i.html)
-    * Lab 1 [instructions](hw_lab_instruction/lab01-hello-r/lab01-hello-r.html) and repo (accept GH classroom [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hello-class/accept)). Due 5pm, Oct 7.
+    * Lab 1 [instructions](hw_lab_instruction/lab01-hello-r/lab01-hello-r.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hello-class/accept)). Due 5pm, Oct 7.
 <!--     * Lab 1 [solutions](hw_lab_instruction/lab01-hello-r/lab01.html) -->
 3.  [dplyr(i)](lecture/l03-transform-dplyr-i.html)
     * Continue working on Lab 1
@@ -48,14 +48,17 @@ MW 11:00-12:40, SRB 1404
     *  [Lab 2](hw_lab_instruction/lab02-merge-conflict/lab02-merge-conflict.html). You will need to accept the [invitation](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab2/accept).
 Due 5pm, Oct 14.
 <!--     * Lab 2 [solutions](hw_lab_instruction/lab02-merge-conflict/lab-02.html) -->
+5. [Functions i](lecture/l12-functions-i.html).
+    * HW 2 assigned.  [instructions](hw_lab_instruction/hw02-accidents/hw02-accidents.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw2/accept)).  Due 5pm EDT, Nov 2.
+<!--     * HW 2 [solutions](hw_lab_instruction/hw02-accidents/hw02.html) -->
+6.  [Factors and dates](lecture/l07-factors-dates.html)
+    *  [Lab 3](hw_lab_instruction/lab03-laquinta-uno/lab03-laquinta-uno.html)
+    <!-- To be completed in same group as lab 2, -->
+[invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab3/accept). Due 5pm, Oct 28.
+<!--     * Lab 3 [solutions](hw_lab_instruction/lab03-laquinta-uno/lab-03.html) -->
 <!-- 5.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html). -->
 <!-- 6.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html) -->
-<!--     *  [Lab 3](hw_lab_instruction/lab03-laquinta-uno/lab03-laquinta-uno.html).  To be completed in same group as lab 2, [invitation here](https://classroom.github.com/a/KvOILDqa). Due 5pm, Sep 25. -->
-<!--     * Lab 3 [solutions](hw_lab_instruction/lab03-laquinta-uno/lab-03.html) -->
-<!-- 7.  [Factors and dates](lecture/l07-factors-dates.html) -->
 <!--     * Continue working on Lab 3 -->
-<!--     * HW 2 assigned.  [instructions](hw_lab_instruction/hw02-accidents/hw02-accidents.html) and repo (accept GH classroom [invite](https://classroom.github.com/a/bvx0Xooy)).  Due 5pm EDT, Sep 30. -->
-<!--     * HW 2 [solutions](hw_lab_instruction/hw02-accidents/hw02.html) -->
 <!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
 <!--     * Turn in lab 3. -->
 <!-- 9. [Data from files](lecture/l09-data-from-files.html) -->
@@ -74,7 +77,6 @@ Due 5pm, Oct 14.
 <!--     *  Reading: [r4ds chapter 14](https://r4ds.had.co.nz/strings.html) -->
 <!-- 13. [Matrices, indexing, linear algebra](lecture/l11-linear-algebra-indexing.html) -->
 <!--     * Finish Lab 5 -->
-<!-- 14. [Functions i](lecture/l12-functions-i.html).  -->
 <!--     *   [Lab 6](hw_lab_instruction/lab06-covid-times/lab06-covid-times.html), make any groups as you like. [Invitation here](https://classroom.github.com/a/wSw6fhiZ). Due 5pm, Oct 30. -->
 <!--     * Lab 6 [solutions](hw_lab_instruction/lab06-covid-times/lab06.html) -->
 <!-- 15. [Functions ii and iteration](lecture/l13-functions-ii.html) -->
