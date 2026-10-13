@@ -47,7 +47,7 @@ MW 11:00-12:40, SRB 1404
 4.  [Data types in R](lecture/l04-data-types.html)
     *  [Lab 2](hw_lab_instruction/lab02-merge-conflict/lab02-merge-conflict.html). You will need to accept the [invitation](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab2/accept).
 Due 5pm, Oct 14.
-<!--     * Lab 2 [solutions](hw_lab_instruction/lab02-merge-conflict/lab-02.html) -->
+    * Lab 2 [solutions](hw_lab_instruction/lab02-merge-conflict/lab-02.html)
 5. [Functions i](lecture/l12-functions-i.html).
     * HW 2 assigned.  [instructions](hw_lab_instruction/hw02-accidents/hw02-accidents.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw2/accept)).  Due 5pm EDT, Nov 2.
 <!--     * HW 2 [solutions](hw_lab_instruction/hw02-accidents/hw02.html) -->
