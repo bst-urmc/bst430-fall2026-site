@@ -105,7 +105,7 @@ class: code70
 ### The R `print` methods
 .pull-left[
 In contrast, in R there is a `print` generic, and each class can choose to implement its own method for the generic.  We can see all the different ways this generic has been implemented with `methods`.  
-.font50[[1] Using the S3 object orientation system, which is the original and most commonly used system.  Base R also contains two other systems: S4 and refClasses (R5).  S4 is like S3 but with stronger class typing guarantees. R5 behaves like "ordinary" object oriented languages.  There are also several commonly used external implementation of object orientation in R... `r emo::ji("exploding_head")`]
+.font50[[1] Using the S3 object orientation system, which is the original and most commonly used system.  Base R also contains two other systems: S4 and refClasses (R5).  S4 is like S3 but with stronger class typing guarantees. R5 behaves like "ordinary" object oriented languages.  There are also several commonly used external implementation of object orientation in R... `r emoji::emoji("exploding_head")`]
 ]
 .pull-right[
 Behold the print methods:
@@ -140,12 +140,12 @@ So we want to make our own class, and have it print specially we need to do two 
 ---
 
 ```{r}
-class(my_list) = 'dr_awesome'
+class(my_list) = 'mr_awesome'
 print.dr_awesome = function(x, ...){
   type = class(x)
   len = length(x)
   cat(glue::glue("An object of type {type} and length {len}.
-  Andrew drools, Dr. Awesome Rules!"))
+  Andrew drools, Mr. Awesome Rules!"))
 }
 ```
 

@@ -35,7 +35,18 @@ class: middle
 
 # Reading rectangular data into R
 
-Here's the [R code in this lecture](l09/l09-data-from-files.R) (also in the repo)
+Here's the [R code in this lecture](l09/l09-data-from-files.R) 
+<!-- (also in the repo) -->
+
+Data files: [nobel](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/nobel.csv) 
+[df](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/df.csv)
+[df-na](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/df-na.csv)
+[edibnb-badnames](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/edibnb-badnames.csv)
+[edibnb-badnames](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/edibnb-badnames.csv)
+[favourite-food](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/favourite-food.xlsx)
+[fav-food-clean](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/fav-food-clean.csv)
+
+clicking on each one will download it
 
 ---
 
@@ -461,6 +472,8 @@ class: middle
 
 ## Other types of data
 
+- **PACKAGE**: data sources
+
 - **googlesheets4:** Google Sheets
 - **haven**: SPSS, Stata, and SAS files
 - **DBI**, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame
@@ -502,14 +515,15 @@ sales %>%
 
 ---
 
-## File organization and rstudio cloud
+## File organization 
+<!-- and rstudio cloud -->
 
 -  Picking a sensible and consistent way to organize raw and processed data will save many headaches!
 -  .alert[Generally data should live in its own folder in the analysis project]
   -  But: Sometimes the loading and tidying of the data might be its own project, per se,
   -  Sometimes data will need to be reused across many different projects,
   -  And sometimes data is too big or too sensitive to put on github.
--  In Rstudio cloud, it is possible to upload, download files and move files  using the "files" pane, and move
+<!-- -  In Rstudio cloud, it is possible to upload, download files and move files  using the "files" pane, and move -->
 -  We'll touch project organization again, when we remove the training wheels and make and manage our own desktop Rstudio projects
 
 ---

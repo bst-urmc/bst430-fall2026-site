@@ -56,13 +56,15 @@ Due 5pm, Oct 14.
     <!-- To be completed in same group as lab 2, -->
 [invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab3/accept). Due 5pm, Oct 28.
 <!--     * Lab 3 [solutions](hw_lab_instruction/lab03-laquinta-uno/lab-03.html) -->
-<!-- 5.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html). -->
-<!-- 6.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html) -->
+<!-- 7. [Data from files](lecture/l09-data-from-files.html) -->
+<!-- <!--     *   Repository for lecture 9 [here](https://classroom.github.com/a/Dc1MkHq9) will not be graded, but gets you everything you need at once. --> -->
+<!-- 8. [AI Usage](static/AI Usage Computing.pdf) -->
 <!--     * Continue working on Lab 3 -->
+<!-- 9.  [Knitr tricks and debugging](lecture/l14-debugging.html) -->
+<!-- 10.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html). -->
+<!-- 11.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html) -->
 <!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
 <!--     * Turn in lab 3. -->
-<!-- 9. [Data from files](lecture/l09-data-from-files.html) -->
-<!--     *   Repository for lecture 9 [here](https://classroom.github.com/a/Dc1MkHq9) will not be graded, but gets you everything you need at once. -->
 <!--     *  [Lab 4](hw_lab_instruction/lab04-laquinta-dos/lab04-laquinta-dos.html).  New groups! At least one new teammate for each person. -->
 <!--     [Invitation here](https://classroom.github.com/a/ZG4bwsD8). Due 5pm, Oct 7. -->
 <!--     * Lab 4 [solutions](hw_lab_instruction/lab04-laquinta-dos/lab04.html) -->
@@ -83,8 +85,6 @@ Due 5pm, Oct 14.
 <!--     *  HW 4 assigned.  [instructions](hw_lab_instruction/hw05-modeling-gss/hw-04-modeling-gss.html) and repo (accept GH classroom [invite](https://classroom.github.com/a/6MNDuLCW)).  Due 5pm EDT, Nov 4. -->
 <!--     * HW 4 [solutions](hw_lab_instruction/hw05-modeling-gss/hw-04.html) -->
 <!--     * Work on Lab 6 -->
-<!-- 16.  [Knitr tricks and debugging](lecture/l14-debugging.html) -->
-
 <!--     * Work on Lab 6 -->
 <!-- 17.  [Linear models](lecture/l15-linear-models.html) -->
 

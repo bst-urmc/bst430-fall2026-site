@@ -30,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-09-24 (updated: 2024-09-25 by TL)
+### 2021-09-24 (updated: 2026-10-14 by TL)
 ]
 
 ---
@@ -45,17 +45,28 @@ class: middle
 
 # Reading rectangular data into R
 
-Here's the [R code in this lecture](l09/l09-data-from-files.R) (also in the repo)
+Here's the [R code in this lecture](l09/l09-data-from-files.R) 
+&lt;!-- (also in the repo) --&gt;
+
+Data files: [nobel](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/nobel.csv) 
+[df](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/df.csv)
+[df-na](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/df-na.csv)
+[edibnb-badnames](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/edibnb-badnames.csv)
+[edibnb-badnames](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/edibnb-badnames.csv)
+[favourite-food](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/favourite-food.xlsx)
+[fav-food-clean](https://bst-urmc.github.io/bst430-fall2026-site/lecture/l09/data/fav-food-clean.csv)
+
+clicking on each one will download it
 
 ---
 
 class: middle
 
 .pull-left[
-&lt;img src="l09/img/readr.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/readr.png" alt="" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
-&lt;img src="l09/img/readxl.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/readxl.png" alt="" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -192,7 +203,7 @@ ggplot(edibnb_badnames, aes(x = Number of bathrooms, y = Price)) +
 ```
 
 ```
-## Error: &lt;text&gt;:1:40: unexpected symbol
+## Error in parse(text = input): &lt;text&gt;:1:40: unexpected symbol
 ## 1: ggplot(edibnb_badnames, aes(x = Number of
 ##                                            ^
 ```
@@ -256,7 +267,7 @@ Which type is `x`? Why?
 ]
 
 .pull-left[
-&lt;img src="l09/img/df-na.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/df-na.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
 
@@ -292,7 +303,7 @@ read_csv("l09/data/df-na.csv",
 ```
 
 .pull-left[
-&lt;img src="l09/img/df-na.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/df-na.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
 
@@ -410,7 +421,7 @@ class:middle
 
 ## Favorite foods
 
-&lt;img src="l09/img/fav-food/fav-food.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/fav-food/fav-food.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -436,7 +447,7 @@ fav_food
 
 ## Variable names
 
-&lt;img src="l09/img/fav-food/fav-food-names.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/fav-food/fav-food-names.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -463,7 +474,7 @@ fav_food
 
 ## Handling NAs
 
-&lt;img src="l09/img/fav-food/fav-food-nas.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/fav-food/fav-food-nas.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -515,7 +526,7 @@ glimpse(fav_food)
 ```
 ]
 .pull-right-narrow[
-&lt;img src="l09/img/fav-food/fav-food-age.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/fav-food/fav-food-age.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -543,7 +554,7 @@ fav_food %&gt;%
 ```
 ]
 .pull-right-narrow[
-&lt;img src="l09/img/fav-food/fav-food-ses.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l09/img/fav-food/fav-food-ses.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -676,6 +687,8 @@ class: middle
 
 ## Other types of data
 
+- **PACKAGE**: data sources
+
 - **googlesheets4:** Google Sheets
 - **haven**: SPSS, Stata, and SAS files
 - **DBI**, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame
@@ -723,14 +736,15 @@ class: middle
 
 ---
 
-## File organization and rstudio cloud
+## File organization 
+&lt;!-- and rstudio cloud --&gt;
 
 -  Picking a sensible and consistent way to organize raw and processed data will save many headaches!
 -  .alert[Generally data should live in its own folder in the analysis project]
   -  But: Sometimes the loading and tidying of the data might be its own project, per se,
   -  Sometimes data will need to be reused across many different projects,
   -  And sometimes data is too big or too sensitive to put on github.
--  In Rstudio cloud, it is possible to upload, download files and move files  using the "files" pane, and move
+&lt;!-- -  In Rstudio cloud, it is possible to upload, download files and move files  using the "files" pane, and move --&gt;
 -  We'll touch project organization again, when we remove the training wheels and make and manage our own desktop Rstudio projects
 
 ---
@@ -746,10 +760,10 @@ class: middle
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
