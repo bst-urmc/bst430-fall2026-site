@@ -56,11 +56,11 @@ Due 5pm, Oct 14.
     <!-- To be completed in same group as lab 2, -->
 [invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab3/accept). Due 5pm, Oct 28.
 <!--     * Lab 3 [solutions](hw_lab_instruction/lab03-laquinta-uno/lab-03.html) -->
-<!-- 7. [Data from files](lecture/l09-data-from-files.html) -->
-<!-- <!--     *   Repository for lecture 9 [here](https://classroom.github.com/a/Dc1MkHq9) will not be graded, but gets you everything you need at once. --> -->
-<!-- 8. [AI Usage](static/AI Usage Computing.pdf) -->
-<!--     * Continue working on Lab 3 -->
-<!-- 9.  [Knitr tricks and debugging](lecture/l14-debugging.html) -->
+7. [Data from files](lecture/l09-data-from-files.html)
+<!--     *   Repository for lecture 9 [here](https://classroom.github.com/a/Dc1MkHq9) will not be graded, but gets you everything you need at once. -->
+8. [AI Usage](static/AI Usage Computing.pdf)
+    * Continue working on Lab 3
+9.  [Knitr tricks and debugging](lecture/l14-debugging.html)
 <!-- 10.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html). -->
 <!-- 11.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html) -->
 <!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->

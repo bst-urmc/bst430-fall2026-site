@@ -339,12 +339,12 @@ biden %>%
 --
 .pull-right-narrow[
 **Aesthetic mappings:**  
-`r emo::ji("check")`  x = `date`  
-`r emo::ji("x")`      y = `rating_value`  
-`r emo::ji("x")`      color = `rating_type`
+`r emoji::emoji("check")`  x = `date`  
+`r emoji::emoji("x")`      y = `rating_value`  
+`r emoji::emoji("x")`      color = `rating_type`
 
 **Facet:**  
-`r emo::ji("check")`  `subgroup` (Adults and Voters)
+`r emoji::emoji("check")`  `subgroup` (Adults and Voters)
 ]
 
 ---
