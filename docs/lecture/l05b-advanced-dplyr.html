@@ -30,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-09-12 (updated: 2024-09-18 by TL)
+### 2021-09-12 (updated: 2026-10-28 by TL)
 ]
 
 ---
@@ -143,7 +143,7 @@ ggplot(departures, aes(x = hour, y = n_departures)) +
 ]
 
 .panel[.panel-name[Plot]
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-5-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-5-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -168,7 +168,7 @@ plt
 ]
 
 .panel[.panel-name[Plot]
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-6-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-6-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -189,17 +189,30 @@ departures3 = flights %&gt;%
 ```
 
 ```
-## `summarise()` has grouped output by 'carrier'. You can override
-## using the `.groups` argument.
+## `summarise()` has regrouped the output.
+## ℹ Summaries were computed grouped by carrier and hourf.
+## ℹ Output is grouped by carrier.
+## ℹ Use `summarise(.groups = "drop_last")` to silence this
+##   message.
+## ℹ Use `summarise(.by = c(carrier, hourf))` for per-operation
+##   grouping (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` r
 *(plt %+% departures3) + aes(x = hour)
 ```
+
+```
+## Warning: &lt;ggplot&gt; %+% x was deprecated in ggplot2 4.0.0.
+## ℹ Please use &lt;ggplot&gt; + x instead.
+## This warning is displayed once per session.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this
+## warning was generated.
+```
 ]
 
 .panel[.panel-name[Plot]
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-7-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-7-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -299,7 +312,7 @@ ontime_drop = ontime_1500 %&gt;% group_by(dest, carrier) %&gt;%
 ggplot(ontime_drop, aes(y = ontime_pct, x = dest)) + geom_point() + coord_flip() + theme_minimal(base_size = 8)
 ```
 
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-12-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-12-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 .question[What's with the carriers with 0% or 100% ontime percentages for a destination?]
 
@@ -316,7 +329,7 @@ ontime_drop = ontime_1500 %&gt;% group_by(dest, carrier) %&gt;%
 ggplot(ontime_drop, aes(y = ontime_pct, x = dest, color = n_departed&lt;10)) + geom_point() + coord_flip() + theme_minimal(base_size = 8)
 ```
 
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-13-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-13-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 .question[What are some statistical fixes to this issue?]
 ---
@@ -330,7 +343,7 @@ ggplot(ontime_drop_10, aes(y = ontime_pct, x = dest)) + geom_boxplot() +
   coord_flip()  + theme_minimal(base_size = 8)
 ```
 
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-14-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-14-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 Better...but it's hard to see the rank order of routes.
 
@@ -346,7 +359,7 @@ ggplot(ontime_drop_10, aes(x = dest, y = ontime_pct)) + geom_boxplot() +
   coord_flip()  + theme_minimal(base_size = 8)
 ```
 
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-15-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-15-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 We'll discuss the `fct_reorder` business in greater detail next week.
 
@@ -515,7 +528,7 @@ ggplot(availability,
 ]
 
 .panel[.panel-name[Plot]
-&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-22-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l05b-advanced-dplyr_files/figure-html/unnamed-chunk-22-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 ---
@@ -562,10 +575,10 @@ glimpse(median_mad)
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

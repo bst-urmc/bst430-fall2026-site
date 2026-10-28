@@ -437,12 +437,13 @@ ggplot(biden_longer,
 class: font120, code50
 ## Let's try
 
-1. Suppose you have data (available with `library(tidyr)`) on TB incidence as follows:
+ 1. Suppose you have data (available with `library(tidyr)`) on TB incidence as follows:
 ```{r}
 table2
 ```
 Reshape this so that for each year and country, cases and population appear in separate columns.
-2. Consider this table containing cases by year:
+
+ 2. Consider this table containing cases by year:
 ```{r}
 table4a
 ```

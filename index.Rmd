@@ -61,13 +61,14 @@ Due 5pm, Oct 14.
 8. [AI Usage](static/AI Usage Computing.pdf)
     * Continue working on Lab 3
 9.  [Knitr tricks and debugging](lecture/l14-debugging.html)
-<!-- 10.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html). -->
-<!-- 11.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html) -->
-<!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
-<!--     * Turn in lab 3. -->
-<!--     *  [Lab 4](hw_lab_instruction/lab04-laquinta-dos/lab04-laquinta-dos.html).  New groups! At least one new teammate for each person. -->
-<!--     [Invitation here](https://classroom.github.com/a/ZG4bwsD8). Due 5pm, Oct 7. -->
+10.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html).
+    * Turn in lab 3.
+11.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html)
+    *  [Lab 4](hw_lab_instruction/lab04-laquinta-dos/lab04-laquinta-dos.html).  
+    New groups! At least one new teammate for each person.
+    [Invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab04/accept). Due 5pm, Nov 11.
 <!--     * Lab 4 [solutions](hw_lab_instruction/lab04-laquinta-dos/lab04.html) -->
+<!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
 <!-- 10. [styleguide](lecture/l06-style.html) -->
 <!--     * Finish lab 4. -->
 <!-- 11. [Text processing and Regular Expressions](lecture/l10-text.html)    -->
