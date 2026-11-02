@@ -55,25 +55,25 @@ Due 5pm, Oct 14.
     *  [Lab 3](hw_lab_instruction/lab03-laquinta-uno/lab03-laquinta-uno.html)
     <!-- To be completed in same group as lab 2, -->
 [invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab3/accept). Due 5pm, Oct 28.
-<!--     * Lab 3 [solutions](hw_lab_instruction/lab03-laquinta-uno/lab-03.html) -->
+    * Lab 3 [solutions](hw_lab_instruction/lab03-laquinta-uno/lab-03.html)
 7. [Data from files](lecture/l09-data-from-files.html)
 <!--     *   Repository for lecture 9 [here](https://classroom.github.com/a/Dc1MkHq9) will not be graded, but gets you everything you need at once. -->
 8. [AI Usage](static/AI Usage Computing.pdf)
     * Continue working on Lab 3
 9.  [Knitr tricks and debugging](lecture/l14-debugging.html)
-10.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html).
+9.  [Reshaping and combining data frames](lecture/l05a-reshape-merge.html)
     * Turn in lab 3.
-11.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html)
+9.  [Advanced dplyr(ii)](lecture/l05b-advanced-dplyr.html)
     *  [Lab 4](hw_lab_instruction/lab04-laquinta-dos/lab04-laquinta-dos.html).  
     New groups! At least one new teammate for each person.
     [Invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab04/accept). Due 5pm, Nov 11.
 <!--     * Lab 4 [solutions](hw_lab_instruction/lab04-laquinta-dos/lab04.html) -->
+    * HW 3 assigned.  [instructions](hw_lab_instruction/hw03-fatal-geography/hw03-fatal-geography.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw3/accept)).  Due 5pm EDT, Nov 16.
+<!--     * HW 3 [solutions](hw_lab_instruction/hw03-fatal-geography/hw03.html) -->
 <!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
 <!-- 10. [styleguide](lecture/l06-style.html) -->
 <!--     * Finish lab 4. -->
 <!-- 11. [Text processing and Regular Expressions](lecture/l10-text.html)    -->
-<!--     * HW 3 assigned.  [instructions](hw_lab_instruction/hw03-fatal-geography/hw03-fatal-geography.html) and repo (accept GH classroom [invite](https://classroom.github.com/a/_NYapbxO)).  Due 5pm EDT, Oct 14. -->
-<!--     * HW 3 [solutions](hw_lab_instruction/hw03-fatal-geography/hw03.html) -->
 <!-- 12. [Text analysis](lecture/l10-text-ii.html)    -->
 <!--     *  [Lab 5](hw_lab_instruction/lab05-sadplots/lab05-sadplots.html).  Pair up; you might want to take turns Pull-Committing because changing figures can cause extra GIT problems. [Invitation here](https://classroom.github.com/a/GrR3CQ2R). Due 5pm, Oct 18. -->
 <!--     * Lab 5 [solutions](hw_lab_instruction/lab05-sadplots/lab05.html) -->

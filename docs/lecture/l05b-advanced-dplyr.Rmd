@@ -365,6 +365,7 @@ ggplot(availability,
 ```
 ]
 ]
+
 ---
 
 ## Transform by variable type
@@ -376,3 +377,50 @@ median_mad = nycbnb %>% group_by(neighborhood) %>%
                    list(median = median, mad = mad))) #<<
 glimpse(median_mad)
 ```
+
+---
+class: middle
+
+.hand[# Repeating an operation with `pick`]
+
+---
+
+## `pick()`
+
+If you need to repeat the same operation (on columns) over multiple rows, you can use pick.
+
+ * With across(), you typically apply a function to each column.
+
+ * With pick(), you typically apply a function to the full data frame.
+
+Inside a mutate() or summarise(), pick() provides a way to easily select a subset of columns from your data, it looks something like
+```r
+verb(new = matrix_function(pick(<tidy selection>)))
+```
+where `verb` is `summarize`,  `mutate`, and a few others, where unquoted columns are provided to a function that works on the matrix (row-wise).
+
+---
+
+## Rank the listings
+
+```{r pick-rank}
+ranks = nycbnb |> mutate(rank = dense_rank(pick(accommodates, price)), 
+                                .keep =  "used") 
+ knitr::kable(ranks)
+```
+
+---
+
+## Scoring a Patient Survey
+
+```{r pam, eval=FALSE}
+data = mutate(data, 
+#              pam_scaled_score = 100*(ln(sum(pam_1:pam_13))-ln(13))/ln(52)
+              pam_n            = rowSums(!is.na(pick(pam_1:pam_13))),
+              pam_scaled_score = if_else(pam_n >= 7, 
+                  100*(log(rowMeans(pick(pam_1:pam_13), na.rm=T)*13)-log(13)) / 
+                                             (log(52)-log(13)), NA ) )
+label(data[["pam_scaled_score"]])    = "PAM Scaled Score"
+summary(data["pam_scaled_score"])
+```
+

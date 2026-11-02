@@ -28,20 +28,11 @@ In this assignment we examine traffic accidents in New York State.
 
 # Getting started
 
-Accept the assignment from github classrooms, then go to the course GitHub organization and locate your homework repo, which should be named `hw03-pedestrian-YOUR_GITHUB_USERNAME`.
+Accept the assignment.
 Grab the URL of the repo, and clone it in RStudio.
 First, open the R Markdown document `hw03.Rmd` and Knit it.
 Make sure it compiles without errors.
 The output will be in the file markdown `.md` file with the same name.
-
-## Warm up
-
-Before we introduce the data, let's warm up with some simple exercises.
-
--   Update the YAML, changing the author name to your name, and **knit** the document.
--   Commit your changes with a meaningful commit message.
--   Push your changes to GitHub.
--   Go to your repo on GitHub and confirm that your changes are visible in your Rmd **and** md files. If anything is missing, commit and push again.
 
 ## Packages
 
@@ -74,7 +65,7 @@ You can find out more about the dataset in the NY open data portal:  https://dat
 
 3.  *i)* Convert values stored in `county_name` to **Title Case** (the purpose of this will become clear subsequently, I swear!)  *ii)*  Count the number of fatal crashes per county, per `is_pedbike` *iii)* Consider the top 20 counties (`county_name`) with the most fatal crashes in the data set. Make a barchart showing each county and the number of a) bicycle and pedestrian events and b) other events, filling the bars appropriately to show these two categories.  You will be graded on having an appropriate sort order for the county, and appropriate axis labels.
 
-4.  Download the county population data for New York from [the last census before 2018](https://www.census.gov/data/tables/time-series/demo/popest/2010s-counties-detail.html). Put the file into a sensible place in your rstudio project.  Load it using `read_csv`, clean up the column names using `janitor::clean_names`, filter it down to relevant rows, and select relevant columns from it.
+4.  Download the county population data for New York from [the last census before 2018](https://www.census.gov/programs-surveys/popest/technical-documentation/research/evaluation-estimates/2020-evaluation-estimates/2010s-counties-total.html). Put the file into a sensible place in your rstudio project.  Load it using `read_csv`, clean up the column names using `janitor::clean_names`, filter it down to relevant rows, and select relevant columns from it. (I used the 2019 population estimates, but you could make a different choice.)
 
 ```{marginfigure}
 Hint: you will want to either remove the "County" part of the `ctyname` in the census data, using functions found in `stringr`, or mutate a new column in your `crashes` counts table that appends (glues) "County" onto the `county_name` variable.
@@ -82,10 +73,12 @@ Hint: you will want to either remove the "County" part of the `ctyname` in the c
 
 5.  Join the population data to your table of crashes from Ex 3, and repeat your plot from Ex 3, now normalizing the number of events per county by the population.  (Fatalities per 100,000 population gives nice units here.) Your top 20 counties ought to be different here. Discuss what you find.
 
-6.  Download the [vehicle miles traveled (VMT) per capita data](https://www7.transportation.gov/mission/health/transportation-and-health-tool-data-excel) available from the US Department of Transportation.  You can read more about it [here](https://www.transportation.gov/mission/health/vmt-capita#indicatordescription).  Put the file into a sensible place in your rstudio project and load the `Urbanized Area` sheet into R using `readxl`.  Cleanup the column names.
+6.  Download the [vehicle miles traveled (VMT) per capita data](https://www7.transportation.gov/mission/health/transportation-and-health-tool-data-excel) available from the US Department of Transportation.  
+<!-- You can read more about it [here](https://www.transportation.gov/mission/health/vmt-capita#indicatordescription).   -->
+Put the file into a sensible place in your rstudio project and load the `Urbanized Area` sheet into R using `readxl`.  Cleanup the column names.
 
 ```{marginfigure}
-**Hint**: your life will be made easier if you construct a "crosswalk" mapping the identifiers between the VMT dataset `urbanized_area` and `county_name` from the crashes data, either as a .csv file that you read in with `read_csv` or using the `tibble` or `tribble` function directly in your markdown. Then join the files using the crosswalk.  Here's an example of the first seven rows of such a crosswalk:
+**Hint**: your life will be made easier if you construct a "crosswalk" mapping the identifiers between the VMT dataset `urbanized_area` and `county_name` from the crashes data, either as a .csv file that you read in with `read_csv` or using the `tibble` or `tribble` function directly in your markdown. Then join the files using the crosswalk.  Here's an example of the first seven rows of such a crosswalk (more below):
 ![](img/vmt-crosswalk.png)
 ```
 

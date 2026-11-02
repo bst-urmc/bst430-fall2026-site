@@ -212,21 +212,11 @@ src: url(data:font/ttf;base64,AAEAAAARAQAABAAQQkFTRVT/bgMAAAHYAAAARkdERUYNkQ3CAA
 <p><strong>This is the first assignment where you will get graded and feedback on your coding style.</strong>*</p>
 <div id="getting-started" class="section level1">
 <h1>Getting started</h1>
-<p>Accept the assignment from github classrooms, then go to the course GitHub organization and locate your homework repo, which should be named <code>hw03-pedestrian-YOUR_GITHUB_USERNAME</code>.
+<p>Accept the assignment.
 Grab the URL of the repo, and clone it in RStudio.
 First, open the R Markdown document <code>hw03.Rmd</code> and Knit it.
 Make sure it compiles without errors.
 The output will be in the file markdown <code>.md</code> file with the same name.</p>
-<div id="warm-up" class="section level2">
-<h2>Warm up</h2>
-<p>Before we introduce the data, let’s warm up with some simple exercises.</p>
-<ul>
-<li>Update the YAML, changing the author name to your name, and <strong>knit</strong> the document.</li>
-<li>Commit your changes with a meaningful commit message.</li>
-<li>Push your changes to GitHub.</li>
-<li>Go to your repo on GitHub and confirm that your changes are visible in your Rmd <strong>and</strong> md files. If anything is missing, commit and push again.</li>
-</ul>
-</div>
 <div id="packages" class="section level2">
 <h2>Packages</h2>
 <p>We use the <strong>tidyverse</strong>, <code>vroom</code>, <code>readxl</code> and <code>janitor</code> packages.
@@ -250,7 +240,7 @@ You can load them by running the following:</p>
 <li><p>Convert the names in crashes to <code>snake_case</code> using <code>janitor::clean_names()</code>. Filter the crashes to only include fatal accidents. You should have 1763 observations.</p></li>
 <li><p>Consider the <code>event_descriptor</code> column. First, convert it to lower case. Then, using <code>str_detect</code>, define the set of events that involve collisions with bicyclists or pedestrians. Mutate <code>crashes</code> to add new variable called <code>is_pedbike</code> that identifies these.</p></li>
 <li><p><em>i)</em> Convert values stored in <code>county_name</code> to <strong>Title Case</strong> (the purpose of this will become clear subsequently, I swear!) <em>ii)</em> Count the number of fatal crashes per county, per <code>is_pedbike</code> <em>iii)</em> Consider the top 20 counties (<code>county_name</code>) with the most fatal crashes in the data set. Make a barchart showing each county and the number of a) bicycle and pedestrian events and b) other events, filling the bars appropriately to show these two categories. You will be graded on having an appropriate sort order for the county, and appropriate axis labels.</p></li>
-<li><p>Download the county population data for New York from <a href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-counties-detail.html">the last census before 2018</a>. Put the file into a sensible place in your rstudio project. Load it using <code>read_csv</code>, clean up the column names using <code>janitor::clean_names</code>, filter it down to relevant rows, and select relevant columns from it.</p></li>
+<li><p>Download the county population data for New York from <a href="https://www.census.gov/programs-surveys/popest/technical-documentation/research/evaluation-estimates/2020-evaluation-estimates/2010s-counties-total.html">the last census before 2018</a>. Put the file into a sensible place in your rstudio project. Load it using <code>read_csv</code>, clean up the column names using <code>janitor::clean_names</code>, filter it down to relevant rows, and select relevant columns from it. (I used the 2019 population estimates, but you could make a different choice.)</p></li>
 </ol>
 <p><label for="tufte-mn-1" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-1" class="margin-toggle"><span class="marginnote"><span style="display: block;">Hint: you will want to either remove the “County” part of the
 <code>ctyname</code> in the census data, using functions found in
@@ -259,7 +249,9 @@ You can load them by running the following:</p>
 <code>county_name</code> variable.</span></span></p>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Join the population data to your table of crashes from Ex 3, and repeat your plot from Ex 3, now normalizing the number of events per county by the population. (Fatalities per 100,000 population gives nice units here.) Your top 20 counties ought to be different here. Discuss what you find.</p></li>
-<li><p>Download the <a href="https://www7.transportation.gov/mission/health/transportation-and-health-tool-data-excel">vehicle miles traveled (VMT) per capita data</a> available from the US Department of Transportation. You can read more about it <a href="https://www.transportation.gov/mission/health/vmt-capita#indicatordescription">here</a>. Put the file into a sensible place in your rstudio project and load the <code>Urbanized Area</code> sheet into R using <code>readxl</code>. Cleanup the column names.</p></li>
+<li><p>Download the <a href="https://www7.transportation.gov/mission/health/transportation-and-health-tool-data-excel">vehicle miles traveled (VMT) per capita data</a> available from the US Department of Transportation.<br />
+<!-- You can read more about it [here](https://www.transportation.gov/mission/health/vmt-capita#indicatordescription).   -->
+Put the file into a sensible place in your rstudio project and load the <code>Urbanized Area</code> sheet into R using <code>readxl</code>. Cleanup the column names.</p></li>
 </ol>
 <p><label for="tufte-mn-2" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-2" class="margin-toggle"><span class="marginnote"><span style="display: block;"><strong>Hint</strong>: your life will be made easier if you construct
 a “crosswalk” mapping the identifiers between the VMT dataset
