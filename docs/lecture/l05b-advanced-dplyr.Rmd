@@ -150,8 +150,8 @@ departures3 = flights %>%
   mutate(carrier = factor(carrier), hourf = factor(hour)) %>%
   group_by(carrier, hourf, .drop = FALSE) %>%
   summarize(n_departures = n()) %>%
-  mutate(hour = as.numeric(as.character(hourf))) #<<
-(plt %+% departures3) + aes(x = hour) #<<
+  mutate(hour = as.numeric(as.character(hourf))) 
+(plt + departures3) + aes(x = hour) 
 ```
 ]
 

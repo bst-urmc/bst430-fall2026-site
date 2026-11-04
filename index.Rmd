@@ -50,7 +50,7 @@ Due 5pm, Oct 14.
     * Lab 2 [solutions](hw_lab_instruction/lab02-merge-conflict/lab-02.html)
 5. [Functions i](lecture/l12-functions-i.html).
     * HW 2 assigned.  [instructions](hw_lab_instruction/hw02-accidents/hw02-accidents.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw2/accept)).  Due 5pm EDT, Nov 2.
-<!--     * HW 2 [solutions](hw_lab_instruction/hw02-accidents/hw02.html) -->
+    * HW 2 [solutions](hw_lab_instruction/hw02-accidents/hw02.html)
 6.  [Factors and dates](lecture/l07-factors-dates.html)
     *  [Lab 3](hw_lab_instruction/lab03-laquinta-uno/lab03-laquinta-uno.html)
     <!-- To be completed in same group as lab 2, -->
@@ -71,8 +71,8 @@ Due 5pm, Oct 14.
     * HW 3 assigned.  [instructions](hw_lab_instruction/hw03-fatal-geography/hw03-fatal-geography.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw3/accept)).  Due 5pm EDT, Nov 16.
 <!--     * HW 3 [solutions](hw_lab_instruction/hw03-fatal-geography/hw03.html) -->
 <!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
-<!-- 10. [styleguide](lecture/l06-style.html) -->
-<!--     * Finish lab 4. -->
+1. [styleguide](lecture/l06-style.html)
+    * Finish lab 4.
 <!-- 11. [Text processing and Regular Expressions](lecture/l10-text.html)    -->
 <!-- 12. [Text analysis](lecture/l10-text-ii.html)    -->
 <!--     *  [Lab 5](hw_lab_instruction/lab05-sadplots/lab05-sadplots.html).  Pair up; you might want to take turns Pull-Committing because changing figures can cause extra GIT problems. [Invitation here](https://classroom.github.com/a/GrR3CQ2R). Due 5pm, Oct 18. -->

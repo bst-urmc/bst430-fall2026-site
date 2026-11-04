@@ -75,7 +75,7 @@ Applying a sensible and consistent style:
 --
 
 - Style guide for this course is a fork of the Tidyverse style guide: https://urmc-bst.github.io/style/
-- There's more to it than what we'll cover now,  we'll do a recap later in the semester
+- There's more to it than what we'll cover now,  we'll keep reflecting on it thru the semester
 
 ---
 
@@ -118,13 +118,15 @@ acs_subsetted_for_males
 
 ## Spacing
 
--  In general, put a space before and after all infix operators (=, +, -, =, etc.), and when naming arguments in function calls.
+-  In general, put a space before and after all infix operators (=, +, -, /, etc.), and when naming arguments in function calls.
 -  Exception: when omitting a space improve clarity about order of operations.
 -  Always put a space after a comma, and never before (just like in regular English).
+-  Sometimes, extra spaces emphasize the similarity of code.
 
 ```{r eval = FALSE}
 # Good
-average = mean(feet * 12 + inches, na.rm = TRUE)
+average_imperial = mean(feet * 12 + inches, na.rm = TRUE)
+average_metric   = mean(meters * 100 + centimeters, na.rm = TRUE)
 
 # Also OK
 average = mean(feet*12 + inches, na.rm = TRUE)
@@ -139,11 +141,19 @@ average=mean(feet*12+inches,na.rm=TRUE)
 
 - Always end a line with `+`
 - Always indent the next line
+- If adding on to a plot, same rules apply
 
 ```{r eval = FALSE}
 # Good
 ggplot(diamonds, mapping = aes(x = price)) +
   geom_histogram()
+
+plt = ggplot(diamonds, mapping = aes(x = price)) +
+  geom_histogram()
+
+plt + theme_minimal() +
+  labs(x = "Price ($)")
+
 ```
 
 ---
@@ -153,6 +163,8 @@ ggplot(diamonds, mapping = aes(x = price)) +
 - Limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.
 
 - Take advantage of RStudio editor's auto formatting for indentation at line breaks.
+
+- It can tell if you're still in a function (indents to that function) or a ggplot (small indents)
 
 ---
 
@@ -227,9 +239,13 @@ area = 4/3 * 3.14159 * r^2
 
 # good
 # R knows what pi equals!
-#pi = 3.14159
+# pi = 3.14159
 volume = pi * r^3
 area = 4/3 * pi * r^2
+
+# but e is a function:)
+# e = 2.718282 = e^1
+exp(1)
 ```
 
 ---

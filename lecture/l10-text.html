@@ -6,13 +6,10 @@
     <meta name="author" content="Tanzy Love, based on the course by Andrew McDavid" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
-    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-    <link href="libs/str_view/str_view.css" rel="stylesheet" />
-    <script src="libs/str_view-binding/str_view.js"></script>
     <link rel="stylesheet" href="css/lexis.css" type="text/css" />
     <link rel="stylesheet" href="css/lexis-fonts.css" type="text/css" />
   </head>
@@ -33,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-09-26 (updated: 2022-10-13 by TL)
+### 2021-09-26 (updated: 2026-11-03 by TL)
 ]
 
 ---
@@ -58,24 +55,24 @@ Here's the [cardiac-dx](l10/data/cardiac-dx.csv) and
 ## Cardiac diagnoses
 
 
-```r
+``` r
 diagnoses = read_csv('l10/data/cardiac-dx.csv')
 diagnoses
 ```
 
 ```
-## # A tibble: 100 x 3
+## # A tibble: 100 × 3
 ##      id gender diagnoses                                         
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                             
-## 1 26108 F      {a,d,d} | abdominal situs ambiguous (abdominal he~
-## 2 10949 M      {s,d,l} | aortic stenosis - valvar | atrial septa~
-## 3  8090 F      {s,l,l} | aortic valve position relative to the p~
-## 4 19800 M      {s,l,l} | crisscross atrioventricular valves | de~
-## 5  2708 M      aberrant left subclavian artery | hypoplastic mai~
-## 6 14031 F      absence of the suprarenal inferior vena cava with~
-## 7  4185 M      aortic arch hypoplasia | aortic atresia | coronar~
-## 8   313 F      aortic arch hypoplasia | aortic atresia | hypopla~
-## # ... with 92 more rows
+## 1 26108 F      {a,d,d} | abdominal situs ambiguous (abdominal he…
+## 2 10949 M      {s,d,l} | aortic stenosis - valvar | atrial septa…
+## 3  8090 F      {s,l,l} | aortic valve position relative to the p…
+## 4 19800 M      {s,l,l} | crisscross atrioventricular valves | de…
+## 5  2708 M      aberrant left subclavian artery | hypoplastic mai…
+## 6 14031 F      absence of the suprarenal inferior vena cava with…
+## 7  4185 M      aortic arch hypoplasia | aortic atresia | coronar…
+## 8   313 F      aortic arch hypoplasia | aortic atresia | hypopla…
+## # ℹ 92 more rows
 ```
 
 .question[How to get all the diagnoses of hypoplastic left heart?]
@@ -85,24 +82,24 @@ diagnoses
 ## Attempt 1
 
 
-```r
+``` r
 diagnoses %&gt;% count(diagnoses) %&gt;% 
   arrange(desc(n))
 ```
 
 ```
-## # A tibble: 67 x 2
+## # A tibble: 67 × 2
 ##   diagnoses                                                     n
 ##   &lt;chr&gt;                                                     &lt;int&gt;
 ## 1 screener diagnosis: none                                     26
-## 2 hypoplastic left heart syndrome | screener diagnosis: no~     5
-## 3 atrial septal defect, secundum | screener diagnosis: atr~     3
-## 4 aortic atresia | hypoplastic left heart syndrome | mitra~     2
+## 2 hypoplastic left heart syndrome | screener diagnosis: no…     5
+## 3 atrial septal defect, secundum | screener diagnosis: atr…     3
+## 4 aortic atresia | hypoplastic left heart syndrome | mitra…     2
 ## 5 screener diagnosis: none | tetralogy of fallot                2
-## 6 {a,d,d} | abdominal situs ambiguous (abdominal heterotax~     1
-## 7 {s,d,l} | aortic stenosis - valvar | atrial septal defec~     1
-## 8 {s,l,l} | aortic valve position relative to the pulmonar~     1
-## # ... with 59 more rows
+## 6 aberrant left subclavian artery | hypoplastic main pulmo…     1
+## 7 absence of the suprarenal inferior vena cava with azygou…     1
+## 8 aortic arch hypoplasia | aortic atresia | coronary-camer…     1
+## # ℹ 59 more rows
 ```
 
 --
@@ -114,23 +111,23 @@ Too many unique diagnoses to make headway with this.
 ## Using string matching
 
 
-```r
+``` r
 filter(diagnoses, str_detect(diagnoses, 'hypoplastic'))
 ```
 
 ```
-## # A tibble: 50 x 3
+## # A tibble: 50 × 3
 ##      id gender diagnoses                                         
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                             
-## 1 26108 F      {a,d,d} | abdominal situs ambiguous (abdominal he~
-## 2 10949 M      {s,d,l} | aortic stenosis - valvar | atrial septa~
-## 3 19800 M      {s,l,l} | crisscross atrioventricular valves | de~
-## 4  2708 M      aberrant left subclavian artery | hypoplastic mai~
-## 5 14031 F      absence of the suprarenal inferior vena cava with~
-## 6  4185 M      aortic arch hypoplasia | aortic atresia | coronar~
-## 7   313 F      aortic arch hypoplasia | aortic atresia | hypopla~
-## 8 10792 M      aortic arch hypoplasia | aortic atresia | hypopla~
-## # ... with 42 more rows
+## 1 26108 F      {a,d,d} | abdominal situs ambiguous (abdominal he…
+## 2 10949 M      {s,d,l} | aortic stenosis - valvar | atrial septa…
+## 3 19800 M      {s,l,l} | crisscross atrioventricular valves | de…
+## 4  2708 M      aberrant left subclavian artery | hypoplastic mai…
+## 5 14031 F      absence of the suprarenal inferior vena cava with…
+## 6  4185 M      aortic arch hypoplasia | aortic atresia | coronar…
+## 7   313 F      aortic arch hypoplasia | aortic atresia | hypopla…
+## 8 10792 M      aortic arch hypoplasia | aortic atresia | hypopla…
+## # ℹ 42 more rows
 ```
 
 .question[What different sort of hypoplasties are there?]
@@ -140,7 +137,7 @@ filter(diagnoses, str_detect(diagnoses, 'hypoplastic'))
 ## Split into pieces
 
 
-```r
+``` r
 diagnoses_row = diagnoses %&gt;% 
   tidyr::separate_rows(diagnoses, 
 *                      sep = " \\| ") #WTH?
@@ -148,7 +145,7 @@ diagnoses_row
 ```
 
 ```
-## # A tibble: 412 x 3
+## # A tibble: 412 × 3
 ##      id gender diagnoses                                         
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                             
 ## 1 26108 F      {a,d,d}                                           
@@ -157,7 +154,7 @@ diagnoses_row
 ## 4 26108 F      double outlet right ventricle                     
 ## 5 26108 F      heterotaxy syndrome                               
 ## 6 26108 F      inferior vena cava, left sided                    
-## 7 26108 F      screener diagnosis: other: cavc, aa, hypoplastic ~
+## 7 26108 F      screener diagnosis: other: cavc, aa, hypoplastic …
 ...
 ```
 
@@ -166,13 +163,13 @@ diagnoses_row
 ## Split into pieces
 
 
-```r
+``` r
 diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
   count(diagnoses) %&gt;% arrange(desc(n))
 ```
 
 ```
-## # A tibble: 15 x 2
+## # A tibble: 15 × 2
 ##   diagnoses                                                 n
 ##   &lt;chr&gt;                                                 &lt;int&gt;
 ## 1 hypoplastic left heart syndrome                          21
@@ -183,7 +180,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 ## 6 hypoplastic main pulmonary artery                         6
 ## 7 hypoplastic right pulmonary artery                        5
 ## 8 hypoplastic tricuspid valve                               3
-## # ... with 7 more rows
+## # ℹ 7 more rows
 ```
 
 ---
@@ -194,7 +191,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 
 .panel[.panel-name[Code]
 
-```r
+``` r
 diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
   ggplot(aes(y = diagnoses, x = as.factor(id))) + 
   geom_tile() + 
@@ -203,7 +200,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
        main = 'Co-occurrence of hypoplastic heart disorders')
 ```
 ].panel[.panel-name[Plot]
-&lt;img src="l10-text_files/figure-html/unnamed-chunk-8-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text_files/figure-html/unnamed-chunk-8-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -215,7 +212,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 
 .panel[.panel-name[Code]
 
-```r
+``` r
 diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 * ggplot(aes(y = fct_infreq(diagnoses), x = fct_infreq(as.factor(id)))) +
   geom_tile() + 
@@ -224,7 +221,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
        main = 'Co-occurrence of hypoplastic heart disorders')
 ```
 ].panel[.panel-name[Plot]
-&lt;img src="l10-text_files/figure-html/unnamed-chunk-9-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text_files/figure-html/unnamed-chunk-9-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -236,7 +233,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 
 .panel[.panel-name[Code]
 
-```r
+``` r
 diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 * mutate(diagnoses = str_wrap(diagnoses, width = 40)) %&gt;%
   ggplot(aes(y = fct_infreq(diagnoses), x = fct_infreq(as.factor(id)))) + 
@@ -246,7 +243,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
        main = 'Co-occurrence of hypoplastic heart disorders')
 ```
 ].panel[.panel-name[Plot]
-&lt;img src="l10-text_files/figure-html/unnamed-chunk-10-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text_files/figure-html/unnamed-chunk-10-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -258,7 +255,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 
 .panel[.panel-name[Code]
 
-```r
+``` r
 diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
   mutate(diagnoses = str_wrap(diagnoses, width = 40)) %&gt;%
   ggplot(aes(y = fct_infreq(diagnoses), x = fct_infreq(as.factor(id)))) + 
@@ -269,7 +266,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
        main = 'Co-occurrence of hypoplastic heart disorders')
 ```
 ].panel[.panel-name[Plot]
-&lt;img src="l10-text_files/figure-html/unnamed-chunk-11-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text_files/figure-html/unnamed-chunk-11-1.png" alt="" width="75%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -315,7 +312,7 @@ diagnoses_row %&gt;% filter(str_detect(diagnoses, 'hypoplastic')) %&gt;%
 
 .pull-left[
 
-```r
+``` r
 names = c("Jeff B.", "Larry E.", "Warren B.")
 favorite_food = c("caviar", "cake", "Pappy Van Winkle")
 str_c(names, 
@@ -331,7 +328,7 @@ str_c(names,
 ]
 .pull-right[
 
-```r
+``` r
 dinner = glue::glue("{names} likes {favorite_food}.")
 dinner
 ```
@@ -363,17 +360,17 @@ Others are listed in `?'"'` (the help on the quote function).
 ## Glue with newlines and unicode
 
 
-```r
+``` r
 glue::glue("{names} \n {favorite_food} \U1F643.")
 ```
 
 ```
 ## Jeff B. 
-## caviar &lt;U+0001F643&gt;.
+## caviar 🙃.
 ## Larry E. 
-## cake &lt;U+0001F643&gt;.
+## cake 🙃.
 ## Warren B. 
-## Pappy Van Winkle &lt;U+0001F643&gt;.
+## Pappy Van Winkle 🙃.
 ```
 
 
@@ -382,7 +379,7 @@ glue::glue("{names} \n {favorite_food} \U1F643.")
 ## Count characters
 
 
-```r
+``` r
 names
 ```
 
@@ -390,7 +387,7 @@ names
 ## [1] "Jeff B."   "Larry E."  "Warren B."
 ```
 
-```r
+``` r
 nchar(names)
 ```
 
@@ -405,7 +402,7 @@ nchar(names)
 .pull-left[
 Extract
 
-```r
+``` r
 str_sub(dinner, 1, 11)
 ```
 
@@ -416,7 +413,7 @@ str_sub(dinner, 1, 11)
 .pull-right[
 Replace
 
-```r
+``` r
 str_sub(dinner, 
         #space + l-
         nchar(names) + 2, 
@@ -439,7 +436,7 @@ dinner
 
 Get a character matrix, padding / collapsing excess fields.
 
-```r
+``` r
 str_split_fixed(dinner, " ",  4)
 ```
 
@@ -451,7 +448,7 @@ str_split_fixed(dinner, " ",  4)
 ```
 
 
-```r
+``` r
 str_split_fixed(dinner, " ", 6)
 ```
 
@@ -468,7 +465,7 @@ str_split_fixed(dinner, " ", 6)
 
 Get exactly what you ask for.
 
-```r
+``` r
 str_split(dinner, " ")
 ```
 
@@ -502,25 +499,25 @@ Also recall `tidyr::separate` and `tidyr::separate_rows`.
 
 Read some data
 
-```r
+``` r
 data = read_csv("l10/ae/data/sample_sheet2.csv")
 data
 ```
 
 ```
-## # A tibble: 24 x 6
-##   library_id folder_name          treat~1 sampl~2 tissu~3 dataset
-##        &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-## 1          1 Sample_300_0150_PBL~     300 300_01~ PBL     300_01~
-## 2          2 Sample_300_0150_Syn~     300 300_01~ Syn     300_01~
-## 3          4 Sample_300_0171_PBL~     300 300_01~ PBL     300_01~
-## 4          5 Sample_300_0171_Syn~     300 300_01~ Syn     300_01~
-## 5          6 Sample_300_0173_PBL~     300 300_01~ PBL     300_01~
-## 6          7 Sample_300_0173_Syn~     300 300_01~ Syn     300_01~
-## 7          8 Sample_300_0174_PBL~     300 300_01~ PBL     300_01~
-## 8          9 Sample_300_0174_Syn~     300 300_01~ Syn     300_01~
-## # ... with 16 more rows, and abbreviated variable names
-## #   1: treatment, 2: sample_ID, 3: tissue_source
+## # A tibble: 24 × 6
+##   library_id folder_name        treatment sample_ID tissue_source
+##        &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        
+## 1          1 Sample_300_0150_P…       300 300_0150  PBL          
+## 2          2 Sample_300_0150_S…       300 300_0150  Syn          
+## 3          4 Sample_300_0171_P…       300 300_0171  PBL          
+## 4          5 Sample_300_0171_S…       300 300_0171  Syn          
+## 5          6 Sample_300_0173_P…       300 300_0173  PBL          
+## 6          7 Sample_300_0173_S…       300 300_0173  Syn          
+## 7          8 Sample_300_0174_P…       300 300_0174  PBL          
+## 8          9 Sample_300_0174_S…       300 300_0174  Syn          
+## # ℹ 16 more rows
+## # ℹ 1 more variable: dataset &lt;chr&gt;
 ```
 ---
 Split the `folder_name` field by the '_' character.  This will give you a character `matrix`.
@@ -528,7 +525,7 @@ Split the `folder_name` field by the '_' character.  This will give you a charac
 --
 
 
-```r
+``` r
 char_matrix = str_split_fixed(data$folder_name, pattern = "_", n = 6)
 char_matrix
 ```
@@ -568,7 +565,7 @@ You can extract various columns using `char_matrix[,integer_of_the_column_you_wa
 --
 
 
-```r
+``` r
 data %&gt;% select(folder_name) %&gt;% 
   mutate(treatment = char_matrix[,2],
          sample_ID = str_c(char_matrix[,2], "_", char_matrix[,3]),
@@ -576,7 +573,7 @@ data %&gt;% select(folder_name) %&gt;%
 ```
 
 ```
-## # A tibble: 24 x 4
+## # A tibble: 24 × 4
 ##   folder_name              treatment sample_ID tissue_source
 ##   &lt;chr&gt;                    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;        
 ## 1 Sample_300_0150_PBL_BT_5 300       300_0150  PBL          
@@ -587,7 +584,7 @@ data %&gt;% select(folder_name) %&gt;%
 ## 6 Sample_300_0173_Syn_BT_5 300       300_0173  Syn          
 ## 7 Sample_300_0174_PBL_BT_5 300       300_0174  PBL          
 ## 8 Sample_300_0174_Syn_BT_5 300       300_0174  Syn          
-## # ... with 16 more rows
+## # ℹ 16 more rows
 ```
 
 ---
@@ -596,13 +593,13 @@ Convert the `dataset` field to be entirely lowercase with `str_to_lower`.
 --
 
 
-```r
+``` r
 data %&gt;% select(dataset) %&gt;% 
   mutate(new_data = str_to_lower(dataset))
 ```
 
 ```
-## # A tibble: 24 x 2
+## # A tibble: 24 × 2
 ##   dataset        new_data      
 ##   &lt;chr&gt;          &lt;chr&gt;         
 ## 1 300_0150_PBL_1 300_0150_pbl_1
@@ -613,7 +610,7 @@ data %&gt;% select(dataset) %&gt;%
 ## 6 300_0173_Syn_7 300_0173_syn_7
 ## 7 300_0174_PBL_8 300_0174_pbl_8
 ## 8 300_0174_Syn_9 300_0174_syn_9
-## # ... with 16 more rows
+## # ℹ 16 more rows
 ```
 
 ---
@@ -622,7 +619,7 @@ Collapse sample_ID field into a single character vector (length 1) separated by 
 --
 
 
-```r
+``` r
 str_c(data$sample_ID, collapse=";")
 ```
 
@@ -655,13 +652,24 @@ class: bg-green
 Write what you want to match (if it's alpha-numeric).
 
 
-```r
+``` r
 lunch = c("one app", "two appetizers", "three apples")
 str_view_all(lunch, 'apple')
 ```
 
-<div id="htmlwidget-1b4ff99564eb6e8884a5" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1b4ff99564eb6e8884a5">{"x":{"html":"<ul>\n  <li>one app<\/li>\n  <li>two appetizers<\/li>\n  <li>three <span class='match'>apple<\/span>s<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+```
+## Warning: `str_view_all()` was deprecated in stringr 1.5.0.
+## ℹ Please use `str_view()` instead.
+## This warning is displayed once per session.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this
+## warning was generated.
+```
+
+```
+## [1] │ one app
+## [2] │ two appetizers
+## [3] │ three &lt;apple&gt;s
+```
 
 ---
 class: bg-green
@@ -671,12 +679,15 @@ class: bg-green
 `.` is a generic wildcard, matches any character.
 
 
-```r
+``` r
 str_view_all(lunch, 'app.')
 ```
 
-<div id="htmlwidget-8f836166d559454ecd73" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8f836166d559454ecd73">{"x":{"html":"<ul>\n  <li>one app<\/li>\n  <li>two <span class='match'>appe<\/span>tizers<\/li>\n  <li>three <span class='match'>appl<\/span>es<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+```
+## [1] │ one app
+## [2] │ two &lt;appe&gt;tizers
+## [3] │ three &lt;appl&gt;es
+```
 
 ---
 class: bg-green
@@ -686,12 +697,15 @@ class: bg-green
 `[&lt;set&gt;]` is a character class, matches all characters in `&lt;set&gt;`.  Specify a range of characters with `[&lt;char&gt;-&lt;char&gt;]`.  Invert a class with `[^&lt;set&gt;]`.
 
 
-```r
+``` r
 str_view_all(lunch, 'app[le]')
 ```
 
-<div id="htmlwidget-0d7db73d03839427d3b7" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0d7db73d03839427d3b7">{"x":{"html":"<ul>\n  <li>one app<\/li>\n  <li>two <span class='match'>appe<\/span>tizers<\/li>\n  <li>three <span class='match'>appl<\/span>es<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+```
+## [1] │ one app
+## [2] │ two &lt;appe&gt;tizers
+## [3] │ three &lt;appl&gt;es
+```
 
 ---
 class: bg-green
@@ -701,12 +715,15 @@ class: bg-green
 `(&lt;x&gt;|&lt;y&gt;)` is a disjunction, matches `&lt;x&gt;` or `&lt;y&gt;`.
 
 
-```r
+``` r
 str_view_all(lunch, 'app(le|etizer)s')
 ```
 
-<div id="htmlwidget-c2e3fede5c798441fdae" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c2e3fede5c798441fdae">{"x":{"html":"<ul>\n  <li>one app<\/li>\n  <li>two <span class='match'>appetizers<\/span><\/li>\n  <li>three <span class='match'>apples<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+```
+## [1] │ one app
+## [2] │ two &lt;appetizers&gt;
+## [3] │ three &lt;apples&gt;
+```
 
 ---
 class: bg-green
@@ -720,12 +737,15 @@ class: bg-green
 
 Compare back to `"app."`, which didn't match the first string.
 
-```r
+``` r
 str_view_all(lunch, 'app.*')
 ```
 
-<div id="htmlwidget-a77ad32f6b82562872f5" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a77ad32f6b82562872f5">{"x":{"html":"<ul>\n  <li>one <span class='match'>app<\/span><\/li>\n  <li>two <span class='match'>appetizers<\/span><\/li>\n  <li>three <span class='match'>apples<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+```
+## [1] │ one &lt;app&gt;
+## [2] │ two &lt;appetizers&gt;
+## [3] │ three &lt;apples&gt;
+```
 
 ---
 
@@ -751,12 +771,13 @@ class: bg-green
 We must double the `\` to keep R from interpreting it as an escape character.
 
 
-```r
+``` r
 str_view_all("red tired", "\\bred\\b")
 ```
 
-<div id="htmlwidget-e3479f292a01744eb530" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e3479f292a01744eb530">{"x":{"html":"<ul>\n  <li><span class='match'>red<\/span> tired<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+```
+## [1] │ &lt;red&gt; tired
+```
 
 
 ---
@@ -766,12 +787,13 @@ class: bg-green
 ## Match unconditionally
 
 
-```r
+``` r
 str_view_all("red tired", "red")
 ```
 
-<div id="htmlwidget-65b7328530dcdf303887" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-65b7328530dcdf303887">{"x":{"html":"<ul>\n  <li><span class='match'>red<\/span> ti<span class='match'>red<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+```
+## [1] │ &lt;red&gt; ti&lt;red&gt;
+```
 
 ---
 
@@ -788,7 +810,7 @@ str_view_all("red tired", "red")
 ## `str_detect()`
 
 
-```r
+``` r
 str_detect(string = c("A", "AA", "AB", "B"), 
            pattern = "A")
 ```
@@ -797,7 +819,7 @@ str_detect(string = c("A", "AA", "AB", "B"),
 ## [1]  TRUE  TRUE  TRUE FALSE
 ```
 
-```r
+``` r
 str_detect(string = lunch, pattern = 'app.')
 ```
 
@@ -810,7 +832,7 @@ str_detect(string = lunch, pattern = 'app.')
 ## `str_extract()`
 
 
-```r
+``` r
 feline = c("The fur of cats goes by many names.", 
            "Infimum (the cat) is a cat with a most baleful meow.",
            "Dog.")
@@ -821,7 +843,7 @@ str_extract(string = feline, pattern = "cat")
 ## [1] "cat" "cat" NA
 ```
 
-```r
+``` r
 str_extract_all(string = feline, pattern = "cat")
 ```
 
@@ -843,7 +865,7 @@ str_extract_all(string = feline, pattern = "cat")
 
 For simple queries, behaves like `str_extract()`
 
-```r
+``` r
 feline = c("The fur of cats goes by many names.", 
            "Infimum (the cat) is a cat with a most baleful meow.",
            "Dog.")
@@ -864,7 +886,7 @@ str_match(feline, "cat")
 But returns **capture groups** `(&lt;expression&gt;)` separately.
 
 
-```r
+``` r
 feline = c("The fur of cats goes by many names.", 
            "Infimum (the cat) is a cat with a most baleful meow.",
            "Dog.")
@@ -884,7 +906,7 @@ str_match(feline, "(\\w*) cat.? (\\w*)")
 
 ## `str_match_all()`
 
-```r
+``` r
 feline = c("The fur of cats goes by many names.", 
            "Infimum (the cat) is a cat with a most baleful meow.",
            "Dog.")
@@ -911,7 +933,7 @@ str_match_all(feline, "(\\w*) cat.? (\\w*)")
 ## `str_replace()`
 
 
-```r
+``` r
 feline = c("The fur of cats goes by many names.", 
            "Infimum (the cat) is a cat with a most baleful meow.",
            "Dog.")
@@ -930,7 +952,7 @@ str_replace(feline, "cat", "murder machine")
 ## `str_replace_all()`
 
 
-```r
+``` r
 feline = c("The fur of cats goes by many names.", 
            "Infimum (the cat) is a cat with a most baleful meow.",
            "Dog.")
@@ -950,7 +972,7 @@ str_replace_all(feline, "cat", "murder machine")
 
 Use `\1` to refer to the first capture group, `\2` for the second, etc.  Note the `\\` because `\` must be escaped in R.
 
-```r
+``` r
 str_replace_all(feline, "(\\w*)", "\\1\\1")
 ```
 
@@ -973,7 +995,7 @@ We'll use the dataset `words`, which is loaded automatically when you load the `
 
 
 
-```r
+``` r
 word_df = tibble(word = words)
 ```
 
@@ -984,12 +1006,12 @@ How many words contain an "x" anywhere in them? List them.
 --
 
 
-```r
+``` r
 filter(word_df, str_detect(word, "x"))
 ```
 
 ```
-## # A tibble: 17 x 1
+## # A tibble: 17 × 1
 ##   word    
 ##   &lt;chr&gt;   
 ## 1 box     
@@ -1000,7 +1022,7 @@ filter(word_df, str_detect(word, "x"))
 ## 6 exercise
 ## 7 exist   
 ## 8 expect  
-## # ... with 9 more rows
+## # ℹ 9 more rows
 ```
 
 ---
@@ -1010,12 +1032,12 @@ How many words end in "x"?  List them.  Use `$` to match the end of the string.
 --
 
 
-```r
+``` r
 filter(word_df, str_detect(word, "x$"))
 ```
 
 ```
-## # A tibble: 4 x 1
+## # A tibble: 4 × 1
 ##   word 
 ##   &lt;chr&gt;
 ## 1 box  
@@ -1031,13 +1053,13 @@ Do any words start with "x"?  Use `^` to match the start of the string.
 --
 
 
-```r
+``` r
 filter(word_df, str_detect(word, "^x"))
 ```
 
 ```
-## # A tibble: 0 x 1
-## # ... with 1 variable: word &lt;chr&gt;
+## # A tibble: 0 × 1
+## # ℹ 1 variable: word &lt;chr&gt;
 ```
 
 ---
@@ -1047,12 +1069,12 @@ Using wildcards `.` and quantifiers `+` (rather than the results of the previous
 --
 
 
-```r
+``` r
 filter(word_df, str_detect(word, '.+x.+'))
 ```
 
 ```
-## # A tibble: 13 x 1
+## # A tibble: 13 × 1
 ##   word    
 ##   &lt;chr&gt;   
 ## 1 exact   
@@ -1063,7 +1085,7 @@ filter(word_df, str_detect(word, '.+x.+'))
 ## 6 exist   
 ## 7 expect  
 ## 8 expense 
-## # ... with 5 more rows
+## # ℹ 5 more rows
 ```
 
 ---
@@ -1073,7 +1095,7 @@ On average, how many vowels are there per word?  (Hint: use `str_count` and `[]`
 --
 
 
-```r
+``` r
 word_df %&gt;% 
   mutate(vowels = str_count(word, "[aeiouAEIOU]"),
          vowels_per_letter = vowels/nchar(word)) %&gt;% 
@@ -1081,7 +1103,7 @@ word_df %&gt;%
 ```
 
 ```
-## # A tibble: 1 x 2
+## # A tibble: 1 × 2
 ##   `mean(vowels)` `mean(vowels_per_letter)`
 ##            &lt;dbl&gt;                     &lt;dbl&gt;
 ## 1           1.99                     0.380
@@ -1093,12 +1115,12 @@ List all the words with three or more vowels in a row.  Use `{min_matches,max_ma
 --
 
 
-```r
+``` r
 filter(word_df, str_detect(word, '[aeiou]{3,10}'))
 ```
 
 ```
-## # A tibble: 6 x 1
+## # A tibble: 6 × 1
 ##   word    
 ##   &lt;chr&gt;   
 ## 1 beauty  
@@ -1115,13 +1137,13 @@ filter(word_df, str_detect(word, '[aeiou]{3,10}'))
 Now, consider the  in the `sentences` data set:
 
 
-```r
+``` r
 sentence_df = tibble(sentence  = sentences)
 sentence_df
 ```
 
 ```
-## # A tibble: 720 x 1
+## # A tibble: 720 × 1
 ##   sentence                                   
 ##   &lt;chr&gt;                                      
 ## 1 The birch canoe slid on the smooth planks. 
@@ -1132,7 +1154,7 @@ sentence_df
 ## 6 The juice of lemons makes fine punch.      
 ## 7 The box was thrown beside the parked truck.
 ## 8 The hogs were fed chopped corn and garbage.
-## # ... with 712 more rows
+## # ℹ 712 more rows
 ```
 
 ---
@@ -1141,12 +1163,12 @@ Extract the first word from each sentence.  Hint: negate the space character cla
 --
 
 
-```r
+``` r
 sentence_df %&gt;% mutate(first_word = str_extract(sentence, '\\w*')) %&gt;% head(3)# doesn't include apostrophes '''
 ```
 
 ```
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##   sentence                                    first_word
 ##   &lt;chr&gt;                                       &lt;chr&gt;     
 ## 1 The birch canoe slid on the smooth planks.  The       
@@ -1154,12 +1176,12 @@ sentence_df %&gt;% mutate(first_word = str_extract(sentence, '\\w*')) %&gt;% hea
 ## 3 It's easy to tell the depth of a well.      It
 ```
 
-```r
+``` r
 sentence_df %&gt;% mutate(first_word = str_extract(sentence, '([^ ])*'))
 ```
 
 ```
-## # A tibble: 720 x 2
+## # A tibble: 720 × 2
 ##   sentence                                    first_word
 ##   &lt;chr&gt;                                       &lt;chr&gt;     
 ## 1 The birch canoe slid on the smooth planks.  The       
@@ -1170,7 +1192,7 @@ sentence_df %&gt;% mutate(first_word = str_extract(sentence, '([^ ])*'))
 ## 6 The juice of lemons makes fine punch.       The       
 ## 7 The box was thrown beside the parked truck. The       
 ## 8 The hogs were fed chopped corn and garbage. The       
-## # ... with 712 more rows
+## # ℹ 712 more rows
 ```
 
 ---
@@ -1179,12 +1201,12 @@ Return all the sentences that contain the colors "red", "blue" or "green".  Use 
 --
 
 
-```r
+``` r
 filter(sentence_df, str_detect(sentence, ("red|blue|green")))
 ```
 
 ```
-## # A tibble: 54 x 1
+## # A tibble: 54 × 1
 ##   sentence                                   
 ##   &lt;chr&gt;                                      
 ## 1 Glue the sheet to the dark blue background.
@@ -1195,7 +1217,7 @@ filter(sentence_df, str_detect(sentence, ("red|blue|green")))
 ## 6 A wisp of cloud hung in the blue air.      
 ## 7 He ordered peach pie with ice cream.       
 ## 8 Pure bred poodles have curls.              
-## # ... with 46 more rows
+## # ℹ 46 more rows
 ```
 
 ---
@@ -1204,14 +1226,14 @@ Extract the first word ending in "s".  Use a capture group `()`, `str_match()` a
 --
 
 
-```r
+``` r
 sentence_df = sentence_df %&gt;% 
   mutate(ends_in_s = str_match(sentence, "([^ ]*s)\\b")[,2])
 sentence_df
 ```
 
 ```
-## # A tibble: 720 x 2
+## # A tibble: 720 × 2
 ##   sentence                                    ends_in_s
 ##   &lt;chr&gt;                                       &lt;chr&gt;    
 ## 1 The birch canoe slid on the smooth planks.  planks   
@@ -1222,7 +1244,7 @@ sentence_df
 ## 6 The juice of lemons makes fine punch.       lemons   
 ## 7 The box was thrown beside the parked truck. was      
 ## 8 The hogs were fed chopped corn and garbage. hogs     
-## # ... with 712 more rows
+## # ℹ 712 more rows
 ```
 
 
@@ -1235,12 +1257,12 @@ because "reared" contains "red". Fix the regular expression so it only matches t
 --
 
 
-```r
+``` r
 filter(sentence_df, str_detect(sentence, ("\\bred\\b|\\bblue\\b|\\bgreen\\b")))
 ```
 
 ```
-## # A tibble: 26 x 2
+## # A tibble: 26 × 2
 ##   sentence                                        ends_in_s
 ##   &lt;chr&gt;                                           &lt;chr&gt;    
 ## 1 Glue the sheet to the dark blue background.     &lt;NA&gt;     
@@ -1251,7 +1273,7 @@ filter(sentence_df, str_detect(sentence, ("\\bred\\b|\\bblue\\b|\\bgreen\\b")))
 ## 6 The sky that morning was clear and bright blue. was      
 ## 7 A blue crane is a tall wading bird.             is       
 ## 8 It is hard to erase blue or red ink.            is       
-## # ... with 18 more rows
+## # ℹ 18 more rows
 ```
 
 
@@ -1487,10 +1509,10 @@ filter(sentence_df, str_detect(sentence, ("\\bred\\b|\\bblue\\b|\\bgreen\\b")))
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
