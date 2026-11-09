@@ -73,11 +73,11 @@ Due 5pm, Oct 14.
 <!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
 1. [styleguide](lecture/l06-style.html)
     * Finish lab 4.
-<!-- 11. [Text processing and Regular Expressions](lecture/l10-text.html)    -->
+1. [Text processing and Regular Expressions](lecture/l10-text.html)
+    *  Reading: [r4ds chapter 14](https://r4ds.had.co.nz/strings.html)
 <!-- 12. [Text analysis](lecture/l10-text-ii.html)    -->
 <!--     *  [Lab 5](hw_lab_instruction/lab05-sadplots/lab05-sadplots.html).  Pair up; you might want to take turns Pull-Committing because changing figures can cause extra GIT problems. [Invitation here](https://classroom.github.com/a/GrR3CQ2R). Due 5pm, Oct 18. -->
 <!--     * Lab 5 [solutions](hw_lab_instruction/lab05-sadplots/lab05.html) -->
-<!--     *  Reading: [r4ds chapter 14](https://r4ds.had.co.nz/strings.html) -->
 <!-- 13. [Matrices, indexing, linear algebra](lecture/l11-linear-algebra-indexing.html) -->
 <!--     * Finish Lab 5 -->
 <!--     *   [Lab 6](hw_lab_instruction/lab06-covid-times/lab06-covid-times.html), make any groups as you like. [Invitation here](https://classroom.github.com/a/wSw6fhiZ). Due 5pm, Oct 30. -->

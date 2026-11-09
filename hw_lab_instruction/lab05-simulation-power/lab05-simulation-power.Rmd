@@ -1,0 +1,181 @@
+---
+title: "Lab 05 - Functions, Simulations, and Power, Oh My!"
+output: 
+  tufte::tufte_html:
+    css: ../lab.css
+    tufte_variant: "envisioned"
+    highlight: pygments
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+We are going to do a simulation study.
+We will step thru setting a goal, simulating data, making a function, running a loop, and saving simulation output. 
+
+We are trying to see how the power to find a significant logistic regression slope is influenced by the proportion of 1's in a binary variable.
+
+# Learning goals
+
+-   Simulating a dataset
+-   Running a loop with a personal function
+-   Calculating power
+
+## Packages
+
+I don't think we need any packages today, but you might use something
+ that you learned from the **tidyverse** package.
+
+We are not starting with any data this time.
+
+```{r load-packages, eval = TRUE, warning=FALSE, message = FALSE}
+library(tidyverse) 
+```
+
+# Exercises
+
+## Simulate Data
+
+We want to run a logistic regression. Here is a tiny version of an example dataset we might use.
+
+```{r example-data, echo=FALSE}
+set.seed(11142012)
+(data = data.frame(y=rbinom(10,1,.5), x1 = rnorm(10, 40, 5), x2 = rbinom(10,1,.2))) 
+```
+
+### Start by generating x1 and x2, then y is a function of them
+
+You need a way to generate them that you can use over and over again, getting different new datasets. So, lookup `rnorm` and `rbinom`.
+
+1. Create a function to generate datasets.
+
+  + Generate 100 values that could be x1 and 100 values that could be x2 and put them together into a data.frame with the right variable names. (What do you name your dataframe?) 
+
+We will assume that the value of y is determined by a logistic regression on x1 and x2.
+
+$$ logit( Pr(y = 1) ) = \beta_0 + \beta_1 * x_1 + \beta_2 * x_2$$
+
+NOTE: If you pick values of x1 or $\beta$ that make it very likely that y=1 (or 0), then the simulated y values might only have 1's (or 0's) and this will not work. 
+
+
+  + Use the values of x1 and x2 to calculate y and add y to your database.
+Print the head of the dataframe to show it.
+
+  + Define a function that takes at least these arguments (choose names!):
+    + $\beta$ and start with any values (not 0!)
+    + Pr(x2=1) and let's start with Pr(x2=1)=0.5
+    + number of data rows (in my tiny data there are 10)
+    + it is OK to hard-code the x1 part for now because we will not change it
+  
+  + Show a function call that will generate a new dataframe like the one you made above, but new! Print the head of the dataframe to show it.
+  (Note: how do you generate reproducible random values?) 
+    
+### What do we have now?
+
+At this point, you should be able to generate as many dataframes with variables y, x1, x2 as you want and as short or long as you want.
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. 
+
+## Run a logistic regression model fit
+
+We will now run one logistic regression. Here is the syntax for the tiny version of an example dataset above.
+
+```{r example-glm, echo=TRUE, warning=FALSE}
+model = glm(y ~ x1 + x2, family = binomial, data)
+model
+names(model)
+```
+
+1. For your data, fit the model and pull out the estimate of $\beta_2$. Is your estimate equal to the true value? 
+Use the confint(model) function to pull out the 95% Confidence interval for $\beta_2$. Does your interval contain zero? That question is equivalent  to what hypothesis test? Does your interval contain the true value? 
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. 
+
+## Repeat a bunch of times
+
+We will simulate 20 datasets and, for each one, run one logistic regression. 
+You could either create all the data first and then run each one through the modeling, or generate each dataset, model it, and start over again. 
+
+```{r example-loop, echo=TRUE, eval=FALSE}
+maybe do something before you start
+
+nsims = 20
+for(i in seq.int(nsims))
+{
+  something...
+}
+
+how can you show the 20 results together?
+```
+
+1. For 20 simulated datasts, fit the model and pull out the estimate and 95% CI of $\beta_2$. Report how often the confidence interval includes the true value (this makes more sense if the true value is the same for all 20 simulations). Make a figure that simultaneously shows all 20 confidence intervals for $\beta2$. This is a type of forest plot.
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. 
+
+## Type I Error - $\alpha$
+
+We will repeat the simulation, but a little bit bigger and setting up a null-hypothesis case. The type-I error is the probability that a hypothesis is rejected, given that the truth is a null hypothesis. We can estimate it through simulation.
+
+1. What is the true value of $\beta_2$ under the null hypothesis? How many simulations do you think we need to estimate $\alpha$? Get an estimate of $\alpha$ when n (number of data points) is each of these values:
+ + 100
+ + 500
+ + 50
+ 
+Does the type-I error change dramatically when the sample size changes?
+
+Pick three more values of n (they don't need to be round) and plot n versus the estimated type-I error.
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. 
+
+## Feel the power
+
+The power is the probability that a hypothesis is rejected, given that the truth is a specific alternative hypothesis. We can also estimate it through simulation.
+
+1. What are some non-null hypothesis values of $\beta_2$? Fix n=500. Get an estimate of power (also called $1-\beta$) when the true $\beta_2$ is each of these values:
+ + 1
+ + 5
+ + 0.5
+ 
+Does the power change dramatically when the effect size changes?
+
+Pick three more values of $\beta_2$ and plot effect size versus the estimated power.
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. 
+
+## Plot the power
+
+Effect size is not the only thing that might change the power. We will  finally use the other argument that I requested in the beginning, Pr(x2=1). Let's fix $\beta_2=1$ for this part.
+
+1. Make a sequence of values from 0.05 to 0.95 for Pr(x2=1). Make a sequence of values for n from 20 to 1000. Simulate a power value for each combination and plot a surface with (x,y) points for the combinations and color related to the simlated power (which falls between 0 and 1).
+ 
+1. How big a sample size do you need to get at least 80% power to detect a significant effect of x2, if Pr(x2=1)=0.5? What if Pr(x2=1)=0.1? Explain why.
+
+
+
+
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
+
+# Wrapping up
+
+Go back through your write up to make sure you're following coding style guidelines we discussed in class.
+Make any edits as needed.
+
+Also, make sure all of your R chunks are properly labelled, and your figures are reasonably sized.
+
+Once the last team member for the week pushes their final changes, others should *pull* the changes and knit the R Markdown document to confirm that they can reproduce the report.
+
+# Power memes
+
+Statisticians (especially biostatisticians) have a love-hate relationship with power analyses. They keep us employed, but we do not enjoy the number of assumptions that both underlie a power analysis and are generally omitted from descriptions.
+
+__TODO add links__
+
+## Rubric
+
+25 points total.
+*  5 questions @ 3 points for correct and complete answers
+*  5 points github commit history
+*  5 points coding style, R chunks are properly labelled, and your figures are reasonably sized.

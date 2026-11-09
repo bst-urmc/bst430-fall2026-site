@@ -30,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-09-26 (updated: 2026-11-03 by TL)
+### 2021-09-26 (updated: 2026-11-09 by TL)
 ]
 
 ---
@@ -654,15 +654,7 @@ Write what you want to match (if it's alpha-numeric).
 
 ``` r
 lunch = c("one app", "two appetizers", "three apples")
-str_view_all(lunch, 'apple')
-```
-
-```
-## Warning: `str_view_all()` was deprecated in stringr 1.5.0.
-## ℹ Please use `str_view()` instead.
-## This warning is displayed once per session.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this
-## warning was generated.
+str_view(lunch, 'apple', match = NA)
 ```
 
 ```
@@ -680,7 +672,7 @@ class: bg-green
 
 
 ``` r
-str_view_all(lunch, 'app.')
+str_view(lunch, 'app.', match = NA)
 ```
 
 ```
@@ -698,7 +690,7 @@ class: bg-green
 
 
 ``` r
-str_view_all(lunch, 'app[le]')
+str_view(lunch, 'app[le]', match = NA)
 ```
 
 ```
@@ -716,7 +708,7 @@ class: bg-green
 
 
 ``` r
-str_view_all(lunch, 'app(le|etizer)s')
+str_view(lunch, 'app(le|etizer)s', match = NA)
 ```
 
 ```
@@ -738,7 +730,7 @@ class: bg-green
 Compare back to `"app."`, which didn't match the first string.
 
 ``` r
-str_view_all(lunch, 'app.*')
+str_view(lunch, 'app.*', match = NA)
 ```
 
 ```
@@ -772,7 +764,7 @@ We must double the `\` to keep R from interpreting it as an escape character.
 
 
 ``` r
-str_view_all("red tired", "\\bred\\b")
+str_view("red tired", "\\bred\\b", match = NA)
 ```
 
 ```
@@ -788,7 +780,7 @@ class: bg-green
 
 
 ``` r
-str_view_all("red tired", "red")
+str_view("red tired", "red", match = NA)
 ```
 
 ```

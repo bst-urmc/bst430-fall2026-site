@@ -413,7 +413,7 @@ Write what you want to match (if it's alpha-numeric).
 
 ```{r}
 lunch = c("one app", "two appetizers", "three apples")
-str_view_all(lunch, 'apple')
+str_view(lunch, 'apple', match = NA)
 ```
 
 ---
@@ -424,7 +424,7 @@ class: bg-green
 `.` is a generic wildcard, matches any character.
 
 ```{r}
-str_view_all(lunch, 'app.')
+str_view(lunch, 'app.', match = NA)
 ```
 
 ---
@@ -435,7 +435,7 @@ class: bg-green
 `[<set>]` is a character class, matches all characters in `<set>`.  Specify a range of characters with `[<char>-<char>]`.  Invert a class with `[^<set>]`.
 
 ```{r}
-str_view_all(lunch, 'app[le]')
+str_view(lunch, 'app[le]', match = NA)
 ```
 
 ---
@@ -446,7 +446,7 @@ class: bg-green
 `(<x>|<y>)` is a disjunction, matches `<x>` or `<y>`.
 
 ```{r}
-str_view_all(lunch, 'app(le|etizer)s')
+str_view(lunch, 'app(le|etizer)s', match = NA)
 ```
 
 ---
@@ -461,7 +461,7 @@ class: bg-green
 
 Compare back to `"app."`, which didn't match the first string.
 ```{r}
-str_view_all(lunch, 'app.*')
+str_view(lunch, 'app.*', match = NA)
 ```
 
 ---
@@ -488,7 +488,7 @@ class: bg-green
 We must double the `\` to keep R from interpreting it as an escape character.
 
 ```{r}
-str_view_all("red tired", "\\bred\\b")
+str_view("red tired", "\\bred\\b", match = NA)
 ```
 
 
@@ -499,7 +499,7 @@ class: bg-green
 ## Match unconditionally
 
 ```{r}
-str_view_all("red tired", "red")
+str_view("red tired", "red", match = NA)
 ```
 
 ---
