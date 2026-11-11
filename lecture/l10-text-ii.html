@@ -30,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-09-26 (updated: 2024-10-10 by TL)
+### 2021-09-26 (updated: 2026-11-11 by TL)
 ]
 
 ---
@@ -97,7 +97,7 @@ table(books$title)
 ```
 ## 
 ##          Emma Metamorphosis    Persuasion     The Trial 
-##         16488          1872          8357          6677
+##         16489          1863          8357          6677
 ```
 
 ---
@@ -108,23 +108,26 @@ table(books$title)
 
 ``` r
 books %&gt;% group_by(title) %&gt;% 
-  slice_head(n=6)
+  slice_head(n=3)
 ```
 
 ```
-## # A tibble: 24 × 3
+## # A tibble: 12 × 3
 ## # Groups:   title [4]
-##   gutenberg_id text             title        
-##          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;        
-## 1          158 "Emma"           Emma         
-## 2          158 ""               Emma         
-## 3          158 "by Jane Austen" Emma         
-## 4          158 ""               Emma         
-## 5          158 ""               Emma         
-## 6          158 "Contents"       Emma         
-## 7         5200 "Metamorphosis"  Metamorphosis
-## 8         5200 ""               Metamorphosis
-## # ℹ 16 more rows
+##    gutenberg_id text             title        
+##           &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;        
+##  1          158 "Emma"           Emma         
+##  2          158 ""               Emma         
+##  3          158 "by Jane Austen" Emma         
+##  4         5200 "I"              Metamorphosis
+##  5         5200 ""               Metamorphosis
+##  6         5200 ""               Metamorphosis
+##  7          105 "Persuasion"     Persuasion   
+##  8          105 ""               Persuasion   
+##  9          105 ""               Persuasion   
+## 10         7849 "THE TRIAL"      The Trial    
+## 11         7849 ""               The Trial    
+## 12         7849 "Franz Kafka"    The Trial
 ```
 ]
 
@@ -139,18 +142,18 @@ book_words
 ```
 
 ```
-## # A tibble: 351,095 × 3
-##   gutenberg_id title      word      
-##          &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     
-## 1          105 Persuasion persuasion
-## 2          105 Persuasion by        
-## 3          105 Persuasion jane      
-## 4          105 Persuasion austen    
-## 5          105 Persuasion 1818      
-## 6          105 Persuasion contents  
-## 7          105 Persuasion chapter   
-## 8          105 Persuasion i         
-## # ℹ 351,087 more rows
+## # A tibble: 351,087 × 3
+##   gutenberg_id title word    
+##          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   
+## 1          158 Emma  emma    
+## 2          158 Emma  by      
+## 3          158 Emma  jane    
+## 4          158 Emma  austen  
+## 5          158 Emma  contents
+## 6          158 Emma  volume  
+## 7          158 Emma  i       
+## 8          158 Emma  chapter 
+## # ℹ 351,079 more rows
 ```
 
 ---
@@ -162,23 +165,26 @@ book_words
 word_counts = book_words %&gt;%
   group_by(title) %&gt;% count(title, word) %&gt;%
   arrange(desc(n))
-word_counts %&gt;% slice_head(n = 4)
+word_counts %&gt;% slice_head(n = 3)
 ```
 
 ```
-## # A tibble: 16 × 3
+## # A tibble: 12 × 3
 ## # Groups:   title [4]
-##   title         word      n
-##   &lt;chr&gt;         &lt;chr&gt; &lt;int&gt;
-## 1 Emma          to     5238
-## 2 Emma          the    5201
-## 3 Emma          and    4896
-## 4 Emma          of     4291
-## 5 Metamorphosis the    1148
-## 6 Metamorphosis to      753
-## 7 Metamorphosis and     642
-## 8 Metamorphosis he      577
-## # ℹ 8 more rows
+##    title         word      n
+##    &lt;chr&gt;         &lt;chr&gt; &lt;int&gt;
+##  1 Emma          to     5238
+##  2 Emma          the    5201
+##  3 Emma          and    4896
+##  4 Metamorphosis the    1148
+##  5 Metamorphosis to      753
+##  6 Metamorphosis and     642
+##  7 Persuasion    the    3327
+##  8 Persuasion    to     2809
+##  9 Persuasion    and    2800
+## 10 The Trial     the    4726
+## 11 The Trial     to     2855
+## 12 The Trial     and    2006
 ```
 
 ---
@@ -189,23 +195,26 @@ Stop words are common, low-semantic value words.  Sometimes useful to remove.
 
 
 ``` r
-word_counts %&gt;% anti_join(get_stopwords()) %&gt;% slice_head(n = 4)
+word_counts %&gt;% anti_join(get_stopwords()) %&gt;% slice_head(n = 3)
 ```
 
 ```
-## # A tibble: 16 × 3
+## # A tibble: 12 × 3
 ## # Groups:   title [4]
-##   title         word         n
-##   &lt;chr&gt;         &lt;chr&gt;    &lt;int&gt;
-## 1 Emma          mr        1153
-## 2 Emma          emma       786
-## 3 Emma          mrs        699
-## 4 Emma          miss       599
-## 5 Metamorphosis gregor     199
-## 6 Metamorphosis room       131
-## 7 Metamorphosis gregor’s    99
-## 8 Metamorphosis father      96
-## # ℹ 8 more rows
+##    title         word         n
+##    &lt;chr&gt;         &lt;chr&gt;    &lt;int&gt;
+##  1 Emma          mr        1153
+##  2 Emma          emma       786
+##  3 Emma          mrs        699
+##  4 Metamorphosis gregor     199
+##  5 Metamorphosis room       131
+##  6 Metamorphosis gregor’s    99
+##  7 Persuasion    anne       447
+##  8 Persuasion    captain    302
+##  9 Persuasion    mrs        291
+## 10 The Trial     k         1176
+## 11 The Trial     said       770
+## 12 The Trial     now        312
 ```
 
 ---
@@ -222,7 +231,7 @@ word_counts
 ```
 
 ```
-## # A tibble: 20,760 × 4
+## # A tibble: 20,755 × 4
 ## # Groups:   title [4]
 ##   title      word      n  total
 ##   &lt;chr&gt;      &lt;chr&gt; &lt;int&gt;  &lt;int&gt;
@@ -234,7 +243,7 @@ word_counts
 ## 6 Persuasion the    3327  83707
 ## 7 Emma       i      3181 161113
 ## 8 Emma       a      3125 161113
-## # ℹ 20,752 more rows
+## # ℹ 20,747 more rows
 ```
 
 ---
@@ -251,7 +260,7 @@ ggplot(word_counts, aes(x = n/total)) +
   theme_minimal()
 ```
 
-&lt;img src="l10-text-ii_files/figure-html/plottf-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text-ii_files/figure-html/plottf-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -286,7 +295,7 @@ freq_by_rank %&gt;%
 ```
 ]
 .panel[.panel-name[Plot]
-&lt;img src="l10-text-ii_files/figure-html/unnamed-chunk-9-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text-ii_files/figure-html/unnamed-chunk-9-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 ---
@@ -295,7 +304,7 @@ freq_by_rank %&gt;%
 
 
 ``` r
-sentiments
+tidytext::sentiments
 ```
 
 ```
@@ -323,7 +332,7 @@ word_sentiments = word_counts %&gt;%
   mutate(counts = n) %&gt;%
   left_join(sentiments, relationship = "many-to-many") %&gt;% 
                                     #multiple matches here
-  filter(!is.na(sentiment)) %&gt;%     #already grouped!
+  filter(!is.na(sentiment)) %&gt;%     #drop word w/o sentiments (stopwords)
   mutate(word_collapse = fct_lump_n(word, n = 10, w = counts),) %&gt;%
     #it needs to be told that n are the weights of these words
     select(title, word_collapse, sentiment, counts)
@@ -358,7 +367,7 @@ ggplot(word_sentiments, aes(y = fct_reorder(word_collapse,  counts, .fun = sum),
   ylab("Word") + xlab("Occurrence") + theme_minimal()
 ```
 
-&lt;img src="l10-text-ii_files/figure-html/sentiment_comparison-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text-ii_files/figure-html/sentiment_comparison-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -383,23 +392,23 @@ The term frequency is just the word counts, normalized to the number of words pe
 
 
 ``` r
-word_counts = word_counts %&gt;% bind_tf_idf(word, title, n)
+word_counts = word_counts %&gt;% anti_join(get_stopwords()) %&gt;% bind_tf_idf(word, title, n)
 word_counts
 ```
 
 ```
-## # A tibble: 20,760 × 7
+## # A tibble: 20,223 × 7
 ## # Groups:   title [4]
-##   title      word      n  total     tf   idf tf_idf
-##   &lt;chr&gt;      &lt;chr&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Emma       to     5238 161113 0.0325     0      0
-## 2 Emma       the    5201 161113 0.0323     0      0
-## 3 Emma       and    4896 161113 0.0304     0      0
-## 4 The Trial  the    4726  84219 0.0561     0      0
-## 5 Emma       of     4291 161113 0.0266     0      0
-## 6 Persuasion the    3327  83707 0.0397     0      0
-## 7 Emma       i      3181 161113 0.0197     0      0
-## 8 Emma       a      3125 161113 0.0194     0      0
+##   title     word      n  total      tf   idf  tf_idf
+##   &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;  &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1 The Trial k      1176  84219 0.0319  0.693 0.0221 
+## 2 Emma      mr     1153 161113 0.0159  0     0      
+## 3 Emma      emma    786 161113 0.0108  0.693 0.00751
+## 4 The Trial said    770  84219 0.0209  0     0      
+## 5 Emma      mrs     699 161113 0.00963 0     0      
+## 6 Emma      miss    599 161113 0.00825 0     0      
+## 7 Emma      must    567 161113 0.00781 0     0      
+## 8 Emma      much    486 161113 0.00670 0     0      
 ...
 ```
 
@@ -409,7 +418,7 @@ word_counts
 
 This works relatively well to identify signature words -- some represent content,  some represent author style (e.g. contractions used by Kafka)
 
-&lt;img src="l10-text-ii_files/figure-html/signature_words-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l10-text-ii_files/figure-html/signature_words-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -448,7 +457,7 @@ sum(X&gt;0)
 ```
 
 ```
-## [1] 20760
+## [1] 20755
 ```
 
 This is useful for downstream modeling, such as latent Dirichlet allocation.
@@ -464,11 +473,11 @@ X[,10001:10004]
 
 ```
 ## 4 x 4 sparse Matrix of class "dgCMatrix"
-##               nosegay noted nothings notoriety
-## Emma                .     .        .         .
-## The Trial           .     1        .         .
-## Persuasion          1     1        1         1
-## Metamorphosis       .     .        .         .
+##               obligated obscure obstinacy obtrusiveness
+## Emma                  .       .         .             .
+## The Trial             .       1         .             .
+## Persuasion            1       1         1             1
+## Metamorphosis         .       .         .             .
 ```
 
 
@@ -478,7 +487,7 @@ rowSums(as.matrix(X))
 
 ```
 ##          Emma     The Trial    Persuasion Metamorphosis 
-##        161113         84219         83707         22056
+##        161113         84219         83707         22048
 ```
 
 &lt;!-- --- --&gt;
@@ -490,10 +499,10 @@ rowSums(as.matrix(X))
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

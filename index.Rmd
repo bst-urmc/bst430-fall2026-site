@@ -70,12 +70,13 @@ Due 5pm, Oct 14.
 <!--     * Lab 4 [solutions](hw_lab_instruction/lab04-laquinta-dos/lab04.html) -->
     * HW 3 assigned.  [instructions](hw_lab_instruction/hw03-fatal-geography/hw03-fatal-geography.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw3/accept)).  Due 5pm EDT, Nov 16.
 <!--     * HW 3 [solutions](hw_lab_instruction/hw03-fatal-geography/hw03.html) -->
-<!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
 1. [styleguide](lecture/l06-style.html)
     * Finish lab 4.
 1. [Text processing and Regular Expressions](lecture/l10-text.html)
     *  Reading: [r4ds chapter 14](https://r4ds.had.co.nz/strings.html)
-<!-- 12. [Text analysis](lecture/l10-text-ii.html)    -->
+1. [Text analysis](lecture/l10-text-ii.html)
+    *  [Lab 5](hw_lab_instruction/lab05-sadplots/lab05-simulation-power.html).  [Invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab05/accept). Due 5pm, Dec 2.
+<!--     * Lab 5 [solutions](hw_lab_instruction/lab05-simulation-power/lab05.html) -->
 <!--     *  [Lab 5](hw_lab_instruction/lab05-sadplots/lab05-sadplots.html).  Pair up; you might want to take turns Pull-Committing because changing figures can cause extra GIT problems. [Invitation here](https://classroom.github.com/a/GrR3CQ2R). Due 5pm, Oct 18. -->
 <!--     * Lab 5 [solutions](hw_lab_instruction/lab05-sadplots/lab05.html) -->
 <!-- 13. [Matrices, indexing, linear algebra](lecture/l11-linear-algebra-indexing.html) -->
@@ -85,6 +86,8 @@ Due 5pm, Oct 14.
 <!-- 15. [Functions ii and iteration](lecture/l13-functions-ii.html) -->
 <!--     *  HW 4 assigned.  [instructions](hw_lab_instruction/hw05-modeling-gss/hw-04-modeling-gss.html) and repo (accept GH classroom [invite](https://classroom.github.com/a/6MNDuLCW)).  Due 5pm EDT, Nov 4. -->
 <!--     * HW 4 [solutions](hw_lab_instruction/hw05-modeling-gss/hw-04.html) -->
+<!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
+
 <!--     * Work on Lab 6 -->
 <!--     * Work on Lab 6 -->
 <!-- 17.  [Linear models](lecture/l15-linear-models.html) -->

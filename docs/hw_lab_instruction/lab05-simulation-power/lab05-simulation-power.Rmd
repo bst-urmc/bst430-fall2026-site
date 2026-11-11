@@ -56,6 +56,17 @@ You need a way to generate them that you can use over and over again, getting di
 We will assume that the value of y is determined by a logistic regression on x1 and x2.
 
 $$ logit( Pr(y = 1) ) = \beta_0 + \beta_1 * x_1 + \beta_2 * x_2$$
+where
+$$ logit(p) = \log\left(\frac{p}{1-p}\right) $$
+
+```{r}
+# I have always used these functions:
+gtools::logit(seq(.1,.9,.05))
+gtools::inv.logit(seq(-5, 5,,15))
+# I recently learned that base R has these:
+qlogis(seq(.1,.9,.05))
+plogis(seq(-5, 5,,15))
+```
 
 NOTE: If you pick values of x1 or $\beta$ that make it very likely that y=1 (or 0), then the simulated y values might only have 1's (or 0's) and this will not work. 
 
@@ -171,11 +182,13 @@ Once the last team member for the week pushes their final changes, others should
 
 Statisticians (especially biostatisticians) have a love-hate relationship with power analyses. They keep us employed, but we do not enjoy the number of assumptions that both underlie a power analysis and are generally omitted from descriptions.
 
-__TODO add links__
+[My favorite](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
+
+[Some more silly ones](https://forms.app/en/blog/statistics-memes)
 
 ## Rubric
 
-25 points total.
-*  5 questions @ 3 points for correct and complete answers
+31 points total.
+*  7 questions @ 3 points for correct and complete answers
 *  5 points github commit history
 *  5 points coding style, R chunks are properly labelled, and your figures are reasonably sized.

@@ -243,7 +243,27 @@ that you learned from the <strong>tidyverse</strong> package.</p>
 <li>Generate 100 values that could be x1 and 100 values that could be x2 and put them together into a data.frame with the right variable names. (What do you name your dataframe?)</li>
 </ul>
 <p>We will assume that the value of y is determined by a logistic regression on x1 and x2.</p>
-<p><span class="math display">\[ logit( Pr(y = 1) ) = \beta_0 + \beta_1 * x_1 + \beta_2 * x_2\]</span></p>
+<p><span class="math display">\[ logit( Pr(y = 1) ) = \beta_0 + \beta_1 * x_1 + \beta_2 * x_2\]</span>
+where
+<span class="math display">\[ logit(p) = \log\frac{p}{1-p} \]</span></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># I have always used these functions:</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>gtools<span class="sc">::</span><span class="fu">logit</span>(<span class="fu">seq</span>(.<span class="dv">1</span>,.<span class="dv">9</span>,.<span class="dv">05</span>))</span></code></pre></div>
+<pre><code>##  [1] -2.1972246 -1.7346011 -1.3862944 -1.0986123 -0.8472979 -0.6190392
+##  [7] -0.4054651 -0.2006707  0.0000000  0.2006707  0.4054651  0.6190392
+## [13]  0.8472979  1.0986123  1.3862944  1.7346011  2.1972246</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>gtools<span class="sc">::</span><span class="fu">inv.logit</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>,,<span class="dv">15</span>))</span></code></pre></div>
+<pre><code>##  [1] 0.006692851 0.013576917 0.027346787 0.054313266 0.105000585 0.193321370
+##  [7] 0.328652547 0.500000000 0.671347453 0.806678630 0.894999415 0.945686734
+## [13] 0.972653213 0.986423083 0.993307149</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># I recently learned that base R has these:</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">qlogis</span>(<span class="fu">seq</span>(.<span class="dv">1</span>,.<span class="dv">9</span>,.<span class="dv">05</span>))</span></code></pre></div>
+<pre><code>##  [1] -2.1972246 -1.7346011 -1.3862944 -1.0986123 -0.8472979 -0.6190392
+##  [7] -0.4054651 -0.2006707  0.0000000  0.2006707  0.4054651  0.6190392
+## [13]  0.8472979  1.0986123  1.3862944  1.7346011  2.1972246</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">plogis</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>,,<span class="dv">15</span>))</span></code></pre></div>
+<pre><code>##  [1] 0.006692851 0.013576917 0.027346787 0.054313266 0.105000585 0.193321370
+##  [7] 0.328652547 0.500000000 0.671347453 0.806678630 0.894999415 0.945686734
+## [13] 0.972653213 0.986423083 0.993307149</code></pre>
 <p>NOTE: If you pick values of x1 or <span class="math inline">\(\beta\)</span> that make it very likely that y=1 (or 0), then the simulated y values might only have 1’s (or 0’s) and this will not work.</p>
 <ul>
 <li><p>Use the values of x1 and x2 to calculate y and add y to your database.
@@ -268,8 +288,8 @@ Print the head of the dataframe to show it.</p></li>
 <div id="run-a-logistic-regression-model-fit" class="section level2">
 <h2>Run a logistic regression model fit</h2>
 <p>We will now run one logistic regression. Here is the syntax for the tiny version of an example dataset above.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> binomial, data)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> binomial, data)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## 
 ## Call:  glm(formula = y ~ x1 + x2, family = binomial, data = data)
 ## 
@@ -280,7 +300,7 @@ Print the head of the dataframe to show it.</p></li>
 ## Degrees of Freedom: 9 Total (i.e. Null);  7 Residual
 ## Null Deviance:       12.22 
 ## Residual Deviance: 4.36e-10  AIC: 6</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">names</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">names</span>(model)</span></code></pre></div>
 <pre><code>##  [1] &quot;coefficients&quot;      &quot;residuals&quot;         &quot;fitted.values&quot;    
 ##  [4] &quot;effects&quot;           &quot;R&quot;                 &quot;rank&quot;             
 ##  [7] &quot;qr&quot;                &quot;family&quot;            &quot;linear.predictors&quot;
@@ -301,15 +321,15 @@ Use the confint(model) function to pull out the 95% Confidence interval for <spa
 <h2>Repeat a bunch of times</h2>
 <p>We will simulate 20 datasets and, for each one, run one logistic regression.
 You could either create all the data first and then run each one through the modeling, or generate each dataset, model it, and start over again.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>maybe do something before you start</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>nsims <span class="ot">=</span> <span class="dv">20</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq.int</span>(nsims))</span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>{</span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  something...</span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>}</span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>how can you show the <span class="dv">20</span> results together?</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>maybe do something before you start</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>nsims <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq.int</span>(nsims))</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>{</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  something...</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>}</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>how can you show the <span class="dv">20</span> results together?</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>For 20 simulated datasts, fit the model and pull out the estimate and 95% CI of <span class="math inline">\(\beta_2\)</span>. Report how often the confidence interval includes the true value (this makes more sense if the true value is the same for all 20 simulations). Make a figure that simultaneously shows all 20 confidence intervals for <span class="math inline">\(\beta2\)</span>. This is a type of forest plot.</li>
 </ol>
@@ -365,11 +385,12 @@ Make any edits as needed.</p>
 <div id="power-memes" class="section level1">
 <h1>Power memes</h1>
 <p>Statisticians (especially biostatisticians) have a love-hate relationship with power analyses. They keep us employed, but we do not enjoy the number of assumptions that both underlie a power analysis and are generally omitted from descriptions.</p>
-<p><strong>TODO add links</strong></p>
+<p><a href="https://www.youtube.com/watch?v=Hz1fyhVOjr4">My favorite</a></p>
+<p><a href="https://forms.app/en/blog/statistics-memes">Some more silly ones</a></p>
 <div id="rubric" class="section level2">
 <h2>Rubric</h2>
-<p>25 points total.
-* 5 questions @ 3 points for correct and complete answers
+<p>31 points total.
+* 7 questions @ 3 points for correct and complete answers
 * 5 points github commit history
 * 5 points coding style, R chunks are properly labelled, and your figures are reasonably sized.</p>
 </div>

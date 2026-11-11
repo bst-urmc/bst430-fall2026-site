@@ -96,7 +96,7 @@ table(books$title)
 .scroll-box-15[
 ```{r, output.lines = 24}
 books %>% group_by(title) %>% 
-  slice_head(n=6)
+  slice_head(n=3)
 ```
 ]
 
@@ -105,7 +105,7 @@ books %>% group_by(title) %>%
 ## Get words
 
 ```{r}
-book_words = unnest_tokens(books, text, output = 'word', drop = TRUE) #drops the original variable
+book_words = unnest_tokens(books, text, output = 'word')
 book_words
 ```
 
@@ -117,7 +117,7 @@ book_words
 word_counts = book_words %>%
   group_by(title) %>% count(title, word) %>%
   arrange(desc(n))
-word_counts %>% slice_head(n = 4)
+word_counts %>% slice_head(n = 3)
 ```
 
 ---
@@ -127,7 +127,7 @@ word_counts %>% slice_head(n = 4)
 Stop words are common, low-semantic value words.  Sometimes useful to remove.
 
 ```{r}
-word_counts %>% anti_join(get_stopwords()) %>% slice_head(n = 4)
+word_counts %>% anti_join(get_stopwords()) %>% slice_head(n = 3)
 ```
 
 ---
@@ -197,7 +197,7 @@ freq_by_rank %>%
 ## Sentiment analysis
 
 ```{r}
-sentiments
+tidytext::sentiments
 ```
 
 ---
@@ -209,7 +209,7 @@ word_sentiments = word_counts %>%
   mutate(counts = n) %>%
   left_join(sentiments, relationship = "many-to-many") %>% 
                                     #multiple matches here
-  filter(!is.na(sentiment)) %>%     #already grouped!
+  filter(!is.na(sentiment)) %>%     #drop word w/o sentiments (stopwords)
   mutate(word_collapse = fct_lump_n(word, n = 10, w = counts),) %>%
     #it needs to be told that n are the weights of these words
     select(title, word_collapse, sentiment, counts)
@@ -249,7 +249,7 @@ $$\text{tf-idf}(\text{term}) = \text{idf}(\text{term}) \times \text{tf}(\text{te
 
 
 ```{r calc-tf, output.lines = 12}
-word_counts = word_counts %>% bind_tf_idf(word, title, n)
+word_counts = word_counts %>% anti_join(get_stopwords()) %>% bind_tf_idf(word, title, n)
 word_counts
 ```
 
