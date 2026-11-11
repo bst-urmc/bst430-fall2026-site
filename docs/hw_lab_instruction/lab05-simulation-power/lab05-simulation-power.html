@@ -245,7 +245,7 @@ that you learned from the <strong>tidyverse</strong> package.</p>
 <p>We will assume that the value of y is determined by a logistic regression on x1 and x2.</p>
 <p><span class="math display">\[ logit( Pr(y = 1) ) = \beta_0 + \beta_1 * x_1 + \beta_2 * x_2\]</span>
 where
-<span class="math display">\[ logit(p) = \log\frac{p}{1-p} \]</span></p>
+<span class="math display">\[ logit(p) = \log\left(\frac{p}{1-p}\right) \]</span></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># I have always used these functions:</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>gtools<span class="sc">::</span><span class="fu">logit</span>(<span class="fu">seq</span>(.<span class="dv">1</span>,.<span class="dv">9</span>,.<span class="dv">05</span>))</span></code></pre></div>
 <pre><code>##  [1] -2.1972246 -1.7346011 -1.3862944 -1.0986123 -0.8472979 -0.6190392
@@ -369,8 +369,11 @@ You could either create all the data first and then run each one through the mod
 <h2>Plot the power</h2>
 <p>Effect size is not the only thing that might change the power. We will finally use the other argument that I requested in the beginning, Pr(x2=1). Let’s fix <span class="math inline">\(\beta_2=1\)</span> for this part.</p>
 <ol style="list-style-type: decimal">
-<li><p>Make a sequence of values from 0.05 to 0.95 for Pr(x2=1). Make a sequence of values for n from 20 to 1000. Simulate a power value for each combination and plot a surface with (x,y) points for the combinations and color related to the simlated power (which falls between 0 and 1).</p></li>
-<li><p>How big a sample size do you need to get at least 80% power to detect a significant effect of x2, if Pr(x2=1)=0.5? What if Pr(x2=1)=0.1? Explain why.</p></li>
+<li>Make a sequence of values from 0.05 to 0.95 for Pr(x2=1). Make a sequence of values for n from 20 to 1000. Simulate a power value for each combination and plot a surface with (x,y) points for the combinations and color related to the simulated power (which falls between 0 and 1).</li>
+</ol>
+<p>Watch out! If too many of the <span class="math inline">\(x_2=1\)</span>, then the CI can be NA.</p>
+<ol style="list-style-type: decimal">
+<li>How big a sample size do you need to get at least 80% power to detect a significant effect of x2, if Pr(x2=1)=0.5? What if Pr(x2=1)=0.1? Explain why.</li>
 </ol>
 <p>🧶 ✅ ⬆️ Knit, <em>commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you’re happy with the final state of your work.</em></p>
 </div>

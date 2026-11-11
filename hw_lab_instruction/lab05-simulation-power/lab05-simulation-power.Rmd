@@ -159,7 +159,9 @@ Pick three more values of $\beta_2$ and plot effect size versus the estimated po
 
 Effect size is not the only thing that might change the power. We will  finally use the other argument that I requested in the beginning, Pr(x2=1). Let's fix $\beta_2=1$ for this part.
 
-1. Make a sequence of values from 0.05 to 0.95 for Pr(x2=1). Make a sequence of values for n from 20 to 1000. Simulate a power value for each combination and plot a surface with (x,y) points for the combinations and color related to the simlated power (which falls between 0 and 1).
+1. Make a sequence of values from 0.05 to 0.95 for Pr(x2=1). Make a sequence of values for n from 20 to 1000. Simulate a power value for each combination and plot a surface with (x,y) points for the combinations and color related to the simulated power (which falls between 0 and 1).
+
+Watch out! If too many of the $x_2=1$, then the CI can be NA.
  
 1. How big a sample size do you need to get at least 80% power to detect a significant effect of x2, if Pr(x2=1)=0.5? What if Pr(x2=1)=0.1? Explain why.
 
