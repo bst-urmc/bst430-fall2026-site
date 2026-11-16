@@ -68,7 +68,9 @@ delay_june = filter(delay_stats, month == "6") %>%
 We show the largest total delay for each hour/origin that is not empty.  
 
 ```{r}
-delay_june %>% slice_max(n = 1, order_by = total_delay)
+delay_june %>%   filter(!is.na(total_delay)) %>%
+  group_by(hour, origin) %>% 
+  slice_max(n = 1, order_by = total_delay)
 ```
 ---
 
@@ -88,7 +90,7 @@ We see that flights aren't so delayed early in the day, and peak delays occur in
 delay_june = delay_june %>% 
   group_by(hour, origin, month) %>%
   mutate(residual_total_delay = total_delay - mean(total_delay, na.rm = TRUE))
-(dstat %+% delay_june) + aes(y = residual_total_delay)
+dstat + delay_june + aes(y = residual_total_delay)
 ```
 
 ---
@@ -256,7 +258,8 @@ Some caveats as to why the output from acf differs slightly from the lagged corr
 *  dplyr is great for one-off analyses!
 *  ...but can be a hassle to program abstracted routines.  
 *  Manipulation of vectors and matrices in R is more flexible and transparent.
-*  We'll get more motivation for this when we discuss functions (next week)
+*  They also work well with functions 
+<!-- *  We'll get more motivation for this when we discuss functions (next week) -->
 
 ---
 class: middle
@@ -352,6 +355,7 @@ identical(u,v[2:1])
 ```{r}
 all.equal(u, v)
 all.equal(u,v, tolerance = 0)
+all.equal(u,v, tolerance = 10^-4)
 near(u,v)
 ```
 
@@ -617,7 +621,7 @@ j_dat$z # using dollar sign and name, when possible
 namez=c("z")
 j_dat[[namez]] # using a character vector of names
 #namez=c("z","w")
-#j_dat[[namez]] # does not work: Error
+#j_dat[[namez]] # Error: Subscript `namez` must be size 1, not 2.
 ```
 
 ---
@@ -849,7 +853,7 @@ str(vecMat)
 
 ---
 
-## From a data frame with silent coercion `r emo::ji("person_facepalming")`
+## From a data frame with silent coercion `r emoji::emoji("person_facepalming")`
 
 ```{r, tidy = FALSE}
 multiDat = tibble(vec1 = 5:1,
@@ -857,7 +861,7 @@ multiDat = tibble(vec1 = 5:1,
 (multiMat = as.matrix(multiDat))
 
 # Hey! Where did that heading come from?
-emo::ji("person_facepalming")
+emoji::emoji("person_facepalming")
 ```
 
 ---
@@ -890,6 +894,8 @@ z_mat %*% six_sevens # [2x2] * [2x3]
 ```{r}
 rowSums(z_mat)
 apply(z_mat, 1, sum)
+colSums(z_mat)
+apply(z_mat, 2, sum)
 ```
 
 ---

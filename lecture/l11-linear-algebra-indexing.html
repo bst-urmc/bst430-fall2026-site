@@ -30,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-09-27 (updated: 2024-10-15 by TL)
+### 2021-09-27 (updated: 2026-11-16 by TL)
 ]
 
 ---
@@ -82,14 +82,21 @@ We show the largest total delay for each hour/origin that is not empty.
 
 
 ``` r
-delay_june %&gt;% slice_max(n = 1, order_by = total_delay)
+delay_june %&gt;%   filter(!is.na(total_delay)) %&gt;%
+  group_by(hour, origin) %&gt;% 
+  slice_max(n = 1, order_by = total_delay)
 ```
 
 ```
-## # A tibble: 1 × 5
+## # A tibble: 54 × 5
+## # Groups:   hour, origin [54]
 ##   month day   hour  origin total_delay
 ##   &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;        &lt;dbl&gt;
-## 1 6     27    18    LGA           3402
+## 1 6     27    5     EWR             56
+## 2 6     15    5     JFK             38
+## 3 6     26    5     LGA             59
+## 4 6     26    6     EWR            617
+## # ℹ 50 more rows
 ```
 ---
 
@@ -100,7 +107,7 @@ dstat = ggplot(delay_june, aes(x = as.numeric(hour), y = total_delay, color = or
 dstat
 ```
 
-&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-4-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-4-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 We see that flights aren't so delayed early in the day, and peak delays occur in the evening.
 
@@ -113,10 +120,10 @@ We see that flights aren't so delayed early in the day, and peak delays occur in
 delay_june = delay_june %&gt;% 
   group_by(hour, origin, month) %&gt;%
   mutate(residual_total_delay = total_delay - mean(total_delay, na.rm = TRUE))
-(dstat %+% delay_june) + aes(y = residual_total_delay)
+dstat + delay_june + aes(y = residual_total_delay)
 ```
 
-&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-5-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-5-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -158,7 +165,7 @@ airport_delay_plot = ggplot(delay_wide, aes(x = EWR, y = JFK)) +
 airport_delay_plot + labs(title = "Resid. delay (minutes) on each hour")
 ```
 
-&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-7-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-7-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -178,7 +185,7 @@ cowplot::plot_grid(
 ]
 .panel[.panel-name[Plot]
 .pull-left[
-&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-8-1.png" width="500px" style="display: block; margin: auto;" /&gt;
+&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-8-1.png" alt="" width="500px" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
 Really, we'd like to examine the correlation matrix between airports, or the correlation matrix between lags at various airports...
@@ -1749,7 +1756,8 @@ delay_matrix$EWR
 ```
 
 ```
-## Error in delay_matrix$EWR: $ operator is invalid for atomic vectors
+## Error in `delay_matrix$EWR`:
+## ! $ operator is invalid for atomic vectors
 ```
 
 Need to use brackets
@@ -2592,7 +2600,7 @@ acf_arr = acf(delay_matrix, na.action = na.pass, lag.max = 12, plot = FALSE)
 plot(acf_arr)
 ```
 
-&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-18-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l11-linear-algebra-indexing_files/figure-html/unnamed-chunk-18-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 Some caveats as to why the output from acf differs slightly from the lagged correlations. [1](https://stats.stackexchange.com/questions/81754/understanding-this-acf-output) [2](https://stackoverflow.com/a/16403622/3777396).
 
@@ -2603,7 +2611,8 @@ Some caveats as to why the output from acf differs slightly from the lagged corr
 *  dplyr is great for one-off analyses!
 *  ...but can be a hassle to program abstracted routines.  
 *  Manipulation of vectors and matrices in R is more flexible and transparent.
-*  We'll get more motivation for this when we discuss functions (next week)
+*  They also work well with functions 
+&lt;!-- *  We'll get more motivation for this when we discuss functions (next week) --&gt;
 
 ---
 class: middle
@@ -2807,6 +2816,14 @@ all.equal(u,v, tolerance = 0)
 
 ```
 ## [1] "Mean relative difference: 1.387779e-16"
+```
+
+``` r
+all.equal(u,v, tolerance = 10^-4)
+```
+
+```
+## [1] TRUE
 ```
 
 ``` r
@@ -3278,7 +3295,8 @@ a[[c("joe_num", "veg")]]
 ```
 
 ```
-## Error in a[[c("joe_num", "veg")]]: subscript out of bounds
+## Error in `a[[c("joe_num", "veg")]]`:
+## ! subscript out of bounds
 ```
 
 We get an error if we try to extract more than element with double brackets
@@ -3429,7 +3447,7 @@ j_dat[[namez]] # using a character vector of names
 
 ``` r
 #namez=c("z","w")
-#j_dat[[namez]] # does not work: Error
+#j_dat[[namez]] # Error: Subscript `namez` must be size 1, not 2.
 ```
 
 ---
@@ -3689,7 +3707,7 @@ In summary:
 
 Under the hood, of course, matrices are just vectors with some extra facilities for indexing. R uses column-major order: the columns are stacked up one after the other. (Contrast to C and Python which use row-major order).
 
-&lt;img src="l11/img/major-order.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l11/img/major-order.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -3946,11 +3964,11 @@ multiDat = tibble(vec1 = 5:1,
 
 ``` r
 # Hey! Where did that heading come from?
-emo::ji("person_facepalming")
+emoji::emoji("person_facepalming")
 ```
 
 ```
-## 🤦
+## [1] "🤦"
 ```
 
 ---
@@ -4020,6 +4038,22 @@ apply(z_mat, 1, sum)
 
 ```
 ## [1] 100   4
+```
+
+``` r
+colSums(z_mat)
+```
+
+```
+## [1] 41 63
+```
+
+``` r
+apply(z_mat, 2, sum)
+```
+
+```
+## [1] 41 63
 ```
 
 ---
@@ -4300,10 +4334,10 @@ More reading: [r4ds chapter 20](https://r4ds.had.co.nz/vectors.html).
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
