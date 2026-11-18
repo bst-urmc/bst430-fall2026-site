@@ -30,7 +30,7 @@ class: ur-title, center, middle, title-slide
 ### U of Rochester
 ]
 .date[
-### 2021-10-23 (updated: 2024-10-21 by TL)
+### 2021-10-23 (updated: 2026-11-18 by TL)
 ]
 
 ---
@@ -77,7 +77,8 @@ quantile(z)
 ```
 
 ```
-## Error in quantile.default(z): missing values and NaN's not allowed if 'na.rm' is FALSE
+## Error in `quantile.default()`:
+## ! missing values and NaN's not allowed if 'na.rm' is FALSE
 ```
 
 ``` r
@@ -150,7 +151,8 @@ qdiff5(z, na.rm = FALSE)
 ```
 
 ```
-## Error in quantile.default(x, probs, na.rm = na.rm): missing values and NaN's not allowed if 'na.rm' is FALSE
+## Error in `quantile.default()`:
+## ! missing values and NaN's not allowed if 'na.rm' is FALSE
 ```
 
 ---
@@ -446,7 +448,7 @@ You can display a function's source by typing its name into the Console (without
 curve(quartic_eq, from = -5, to = 5)
 ```
 
-&lt;img src="l13-functions-ii_files/figure-html/unnamed-chunk-19-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="l13-functions-ii_files/figure-html/unnamed-chunk-19-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ``` r
 optimize(quartic_eq, interval = c(-5, 5))
@@ -535,6 +537,14 @@ Note that rather than using `1:n`, which when `n = 0` equals `1 0`  we use `seq_
 
 ``` r
 x = sort(runif(5))
+print(x)
+```
+
+```
+## [1] 0.03999592 0.15904600 0.21879954 0.30269337 0.31661245
+```
+
+``` r
 n_negative = sum(x&lt;0)
 for (i in 1:n_negative){
   print(x[i])
@@ -584,17 +594,24 @@ We can **break** out of a `for()` loop early (before the counter has been iterat
 n = 5
 log.vec = NA
 for (i in 1:n) {
-  if (log(i) &gt; 2) {
-    cat("I'm outta here. I don't like numbers bigger than 2\n")
+  if (log(i) &gt; 1.5) {
+    cat("I'm outta here. I don't like numbers bigger than 1.5\n")
     break
   }
   log.vec[i] = log(i)
 }
+```
+
+```
+## I'm outta here. I don't like numbers bigger than 1.5
+```
+
+``` r
 log.vec
 ```
 
 ```
-## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379
+## [1] 0.0000000 0.6931472 1.0986123 1.3862944
 ```
 
 ---
@@ -606,7 +623,7 @@ class: code70
 
 
 ``` r
-n = 5
+n = 6
 log.vec = NULL
 for (i in 1:n) {
   if (log(i) &gt; 1 &amp; log(i) &lt;= 1.5) {
@@ -627,7 +644,7 @@ log.vec
 ```
 
 ```
-## [1] 0.0000000 0.6931472        NA        NA 1.6094379
+## [1] 0.0000000 0.6931472        NA        NA 1.6094379 1.7917595
 ```
 
 ---
@@ -639,7 +656,7 @@ when `next` skips the counter still grows, but not necessarily the results.
 
 
 ``` r
-n = 5
+n = 6
 log.vec = NULL
 for (i in 1:n) {
   if (log(i) &gt; 1 &amp; log(i) &lt;= 1.5) {
@@ -660,7 +677,7 @@ log.vec
 ```
 
 ```
-## [1] 0.0000000 0.6931472 1.6094379
+## [1] 0.0000000 0.6931472 1.6094379 1.7917595
 ```
 
 ---
@@ -836,7 +853,7 @@ lapply(weird_list, class)
 ### purrr::map_dfr
 
 This applies a function, which must return a data frame, to each element of a list, and binds the rows together.
-I reach for this often.
+&lt;!-- I reach for this often. --&gt;
 
 
 ``` r
@@ -897,7 +914,8 @@ apply(A, 2, count_odd)
 
 ### Recursion
 
-Recursion and (tail) iteration, in theory and in some languages, are equivalent&lt;sup&gt;1&lt;/sup&gt;.  R is a bit fussy about recursion, however, and you can overflow the stack if you aren't careful.  It's also less performant.
+Recursion and (tail) iteration, in theory and in some languages, are equivalent&lt;sup&gt;1&lt;/sup&gt;.  R is a bit fussy about recursion, however, and you can overflow the stack if you aren't careful.  
+&lt;!-- It's also less performant. --&gt;
 
 The Collatz function is the recursion
 $$
@@ -993,7 +1011,7 @@ test_that('invalid args are detected', {
 ```
 
 ```
-## Test passed 😸
+## Test passed with 2 successes 😸.
 ```
 
 ``` r
@@ -1004,7 +1022,7 @@ test_that('NA handling works', {
 ```
 
 ```
-## Test passed 🌈
+## Test passed with 2 successes 🌈.
 ```
 
 No news is good news!
@@ -1025,14 +1043,14 @@ test_that('NA handling works', {
 ```
 
 ```
-## ── Error: NA handling works ────────────────────────────────────────────────────
+## ── Error: NA handling works ─────────────────────────────────────
 ## Error in `quantile.default(x = x, probs = probs)`: missing values and NaN's not allowed if 'na.rm' is FALSE
 ## Backtrace:
 ##     ▆
 ##  1. ├─testthat::expect_that(qdiff_no_NA(c(1:5, NA)), equals(4))
 ##  2. │ └─testthat (local) condition(object)
 ##  3. │   └─testthat::expect_equal(x, expected, ..., expected.label = label)
-##  4. │     └─testthat::quasi_label(enquo(object), label, arg = "object")
+##  4. │     └─testthat::quasi_label(enquo(object), label)
 ##  5. │       └─rlang::eval_bare(expr, quo_get_env(quo))
 ##  6. └─global qdiff_no_NA(c(1:5, NA))
 ##  7.   ├─stats::quantile(x = x, probs = probs)
@@ -1041,7 +1059,7 @@ test_that('NA handling works', {
 
 ```
 ## Error:
-## ! Test failed
+## ! Test failed with 1 failure and 0 successes.
 ```
 
 ---
@@ -1421,10 +1439,10 @@ https://www.stat.cmu.edu/~ryantibs/statcomp/lectures/iteration.html
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "3:2"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "3:2"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
