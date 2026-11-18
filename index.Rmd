@@ -69,7 +69,7 @@ Due 5pm, Oct 14.
     [Invitation here](https://classroom50.org/bst-urmc/bst430-f26/assignments/lab04/accept). Due 5pm, Nov 11.
     * Lab 4 [solutions](hw_lab_instruction/lab04-laquinta-dos/lab04.html)
     * HW 3 assigned.  [instructions](hw_lab_instruction/hw03-fatal-geography/hw03-fatal-geography.html) and repo (accept [invite](https://classroom50.org/bst-urmc/bst430-f26/assignments/hw3/accept)).  Due 5pm EDT, Nov 16.
-<!--     * HW 3 [solutions](hw_lab_instruction/hw03-fatal-geography/hw03.html) -->
+    * HW 3 [solutions](hw_lab_instruction/hw03-fatal-geography/hw03.html)
 1. [styleguide](lecture/l06-style.html)
     * Finish lab 4.
 1. [Text processing and Regular Expressions](lecture/l10-text.html)
@@ -81,17 +81,17 @@ Due 5pm, Oct 14.
 <!--     * Lab 5 [solutions](hw_lab_instruction/lab05-sadplots/lab05.html) -->
 1. [Matrices, indexing, linear algebra](lecture/l11-linear-algebra-indexing.html)
     *  HW 4 will be assigned Nov 30. Due 5pm EDT, Dec 14.
-<!-- 15. [Functions ii and iteration](lecture/l13-functions-ii.html) -->
-<!--     * Finish Lab 5 -->
-<!--     *   [Lab 6](hw_lab_instruction/lab06-covid-times/lab06-covid-times.html), make any groups as you like. [Invitation here](https://classroom.github.com/a/wSw6fhiZ). Due 5pm, Oct 30. -->
-<!--     * Lab 6 [solutions](hw_lab_instruction/lab06-covid-times/lab06.html) -->
-<!-- 8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg) -->
+1. [Functions ii and iteration](lecture/l13-functions-ii.html)
+    * Finish Lab 5
+8.  Effective data visualization [(i)](lecture/03a2-tips-for-effective-dataviz.pdf) [(ii)](lecture/03b-tips-for-effective-dataviz.pdf) [video](https://youtu.be/ZrifrBvFWgg)
 
 <!--     * Work on Lab 6 -->
 <!--     * Work on Lab 6 -->
 <!-- 17.  [Linear models](lecture/l15-linear-models.html) -->
 <!--     *  HW 4 assigned.  [instructions](hw_lab_instruction/hw05-modeling-gss/hw-04-modeling-gss.html) and repo (accept GH classroom [invite](https://classroom.github.com/a/6MNDuLCW)).  Due 5pm EDT, Nov 4. -->
-<!--     * HW 4 [solutions](hw_lab_instruction/hw05-modeling-gss/hw-04.html) -->
+<!--     * HW 4 [solutions](hw_lab_instruction/hw05-modeling-gss/hw-04.html) --><!--     *   [Lab 6](hw_lab_instruction/lab06-covid-times/lab06-covid-times.html), make any groups as you like. [Invitation here](https://classroom.github.com/a/wSw6fhiZ). Due 5pm, Oct 30. -->
+<!--     * Lab 6 [solutions](hw_lab_instruction/lab06-covid-times/lab06.html) -->
+
 
 <!--     * Work on Lab 6 -->
 <!-- 18.  [Multivariate linear models](lecture/l16-multivariate-lm.html) -->
